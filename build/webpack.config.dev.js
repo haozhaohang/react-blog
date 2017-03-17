@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
 
 // 根路径
@@ -13,11 +14,31 @@ var DIST_PATH = path.resolve(ROOT_PATH, 'dist');
 // 模块路径
 var NODE_MODULES_PATH = path.resolve(ROOT_PATH, 'node_modules');
 
+// 通用组件路径
+var COMPONENT_PATH = path.resolve(SRC_PATH, 'components');
+
+// 业务组件路径
+var CONTAINERS_PATH = path.resolve(SRC_PATH, 'containers');
+
+// actions路径
+var ACTIONS_PATH = path.resolve(SRC_PATH, 'actions');
+
+// reducers路径
+var REDUCERS_PATH = path.resolve(SRC_PATH, 'reducers');
+
+// constants路径
+var CONSTANTS_PATH = path.resolve(SRC_PATH, 'constants');
+
+// assets路径
+var ASSETS_PATH = path.resolve(SRC_PATH, 'assets');
+
 
 // 入口文件路径
-var IndexPath = path.resolve(SRC_PATH, 'index.js');
+var IndexPath = path.resolve(SRC_PATH, 'index.jsx');
 
 module.exports = {
+  context: ROOT_PATH,
+
   entry: [
     'react-hot-loader/patch',
     // activate HMR for React
@@ -55,7 +76,26 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.scss$/,
+        use:  ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader'],
+        }),
+      },
     ],
+  },
+
+  resolve: {
+    alias: {
+      Component: COMPONENT_PATH,
+      Containers: CONTAINERS_PATH,
+      Actions: ACTIONS_PATH,
+      Reducers: REDUCERS_PATH,
+      Constants: CONSTANTS_PATH,
+      Assets: ASSETS_PATH,
+    },
+    extensions: [".js", ".json", ".jsx", ".css", ".scss",],
   },
 
   plugins: [
@@ -67,6 +107,8 @@ module.exports = {
 
     new webpack.NoEmitOnErrorsPlugin(),
     // do not emit compiled assets that include errors
+
+    new ExtractTextPlugin('style.css'),
   ],
 
   devServer: {
