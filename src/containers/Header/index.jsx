@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import './index.scss';
+import style from './index.scss';
 
 class Header extends Component {
     render() {
         return(
             <header className="clearfix">
-                <div className="log">
+                <div className={style.logo}>
                     <h1>
-                        title
+                        logo
                     </h1>
                 </div>
-                <div className="list">
+                <div className={style.list}>
                     <Link to="/">首页</Link>
                     <Link to="mobile">Web前端</Link>
                     <Link to="web">移动前端</Link>

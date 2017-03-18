@@ -1,0 +1,43 @@
+// css reset
+body, h1, h2, h3 {
+    margin: 0;
+    font: 14px/1.5 Microsoft YaHei,Arial,Helvetica,sans-serif;
+    color: #2b2b2b;
+    // background: #f1f1ef;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: 0;
+}
+
+// public
+:global(.clearfix) {
+    zoom: 1;
+}
+
+:global(.clearfix:after) {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+:global(.fl) {
+    float: left;
+}
+
+:global(.fr) {
+    float: right;
+}
