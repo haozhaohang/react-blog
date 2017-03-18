@@ -77,12 +77,30 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
-        use:  ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
-        }),
+        test: /\.(sass|scss)$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          "sass-loader",
+        ],
       },
+      {
+        test: /\.(gif|jpe?g|png)$/,
+        include: SRC_PATH,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      }
     ],
   },
 
@@ -107,8 +125,6 @@ module.exports = {
 
     new webpack.NoEmitOnErrorsPlugin(),
     // do not emit compiled assets that include errors
-
-    new ExtractTextPlugin('style.css'),
   ],
 
   devServer: {
