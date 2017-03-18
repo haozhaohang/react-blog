@@ -5,7 +5,7 @@ import style from './index.scss';
 
 // Component
 import Banner from 'Containers/Banner';
-// import HomeMain from 'Containers/main/HomeMain.jsx';
+import Main from 'Containers/Home/Main';
 // import HomeAside from 'Containers/aside/HomeAside.jsx';
 
 class Home extends Component {
@@ -14,6 +14,7 @@ class Home extends Component {
             <div>
                 <Banner />
                 <div className={ style.content }>
+                    <Main />
                 </div>
             </div>
         );
