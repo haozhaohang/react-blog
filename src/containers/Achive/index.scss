@@ -1,0 +1,65 @@
+.achive {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 5px;
+    background-color: #fff;
+    ul {
+        margin-top: 3px;
+        li {
+            height: 25px;
+            border-bottom: 1px solid #ececec;
+            border-top: 1px solid #fff;
+            background: #f7f7f7;
+            transition: all .3s ease-in-out;
+            a {
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                line-height: 24px;
+                color: #39c;
+                font-size: 14px;
+                transition: all .3s ease-in-out;
+            }
+            span {
+                float: right;
+                margin-right: 2px;
+                color: #ccc;
+            }
+            &:before{
+                content: "1";
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                margin-left: 2px;
+                border-radius: 50%;
+                font-size: 12px;
+                border: 2px solid #ccc;
+                text-align: center;
+                line-height: 14px;
+                color: #ccc;
+                vertical-align: super;
+            }
+        }
+    }
+}
+
+.title {
+    height: 32px;
+    h3 {
+        float: left;
+        width: 95px;
+        height: 28px;
+        margin-right: 1px;
+        line-height: 28px;
+        font-size: 14px;
+        text-align: center;
+        cursor: pointer;
+        background: #f1f1ef;
+        transition: .2s;
+    }
+    .action {
+        background: #39f;
+        color: #fff;
+    }
+}
