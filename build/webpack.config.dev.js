@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
+var chalk = require('chalk');
 
 // 根路径
 var ROOT_PATH = path.resolve(__dirname, '../');
@@ -35,6 +36,14 @@ var ASSETS_PATH = path.resolve(SRC_PATH, 'assets');
 
 // 入口文件路径
 var IndexPath = path.resolve(SRC_PATH, 'index.jsx');
+
+console.log(chalk.green(
+  `
+  info:
+    端口 3000
+    开发配置
+  `
+));
 
 module.exports = {
   context: ROOT_PATH,
