@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import { thunk } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import Layout from 'Containers/Layout';
 import Home from 'Containers/Home';
@@ -19,6 +19,8 @@ const store = createStore(
         ...rootReducer,
         routing: routerReducer,
     }),
+    {},
+    applyMiddleware(...middlewares),
 );
 
 
