@@ -109,6 +109,19 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.jsx?$/,
+        include: SRC_PATH,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              emitWarning: true,
+            },
+          },
+        ],
       }
     ],
   },
