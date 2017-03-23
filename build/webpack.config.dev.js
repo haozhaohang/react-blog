@@ -110,19 +110,19 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.jsx?$/,
-        include: SRC_PATH,
-        enforce: 'pre',
-        use: [
-          {
-            loader: 'eslint-loader',
-            options: {
-              emitWarning: true,
-            },
-          },
-        ],
-      }
+      // {
+      //   test: /\.jsx?$/,
+      //   include: SRC_PATH,
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       loader: 'eslint-loader',
+      //       options: {
+      //         emitWarning: true,
+      //       },
+      //     },
+      //   ],
+      // }
     ],
   },
 
@@ -158,5 +158,19 @@ module.exports = {
 
     hot: true,
     // enable HMR on the server
+
+    stats: {
+        colors: true
+    },
+    proxy: {
+      '/api/*': {
+          target: 'https://localhost:8888',
+          secure: false,
+          headers: {
+              Host: 'localhost'
+          }
+      }
+
+    }
   },
 };
