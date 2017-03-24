@@ -150,27 +150,20 @@ module.exports = {
   ],
 
   devServer: {
-    host: 'localhost',
-    port: 3000,
-
-    historyApiFallback: true,
-    // respond to 404s with index.html
-
-    hot: true,
-    // enable HMR on the server
-
-    stats: {
-        colors: true
-    },
-    proxy: {
-      '/api/*': {
-          target: 'https://localhost:8888',
-          secure: false,
-          headers: {
-              Host: 'localhost'
-          }
-      }
-
+        port: 3000,
+        host: '0.0.0.0',
+        historyApiFallback: true,
+        stats: {
+            colors: true
+        },
+        proxy: {
+            '/api/*': {
+                target: 'http://127.0.0.1:8888',
+                secure: false,
+                headers: {
+                    Host: '127.0.0.1'
+                }
+            }
+        }
     }
-  },
 };
