@@ -1,3 +1,4 @@
+import 'babel-polyfill'; // babel 只能对es高级语法进行编译,如果支持新的特性需要引入babel-polyfill
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
