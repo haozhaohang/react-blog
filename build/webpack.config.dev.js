@@ -110,25 +110,25 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.jsx?$/,
-      //   include: SRC_PATH,
-      //   enforce: 'pre',
-      //   use: [
-      //     {
-      //       loader: 'eslint-loader',
-      //       options: {
-      //         emitWarning: true,
-      //       },
-      //     },
-      //   ],
-      // }
+      {
+        test: /\.jsx?$/,
+        include: SRC_PATH,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              emitWarning: true,
+            },
+          },
+        ],
+      }
     ],
   },
 
   resolve: {
     alias: {
-      Component: COMPONENT_PATH,
+      Components: COMPONENT_PATH,
       Containers: CONTAINERS_PATH,
       Actions: ACTIONS_PATH,
       Reducers: REDUCERS_PATH,
