@@ -14,8 +14,8 @@ class Header extends Component {
                 </div>
                 <div className={style.list}>
                     <Link to="/">首页</Link>
-                    <Link to="mobile">Web前端</Link>
-                    <Link to="web">移动前端</Link>
+                    <Link to="web">Web前端</Link>
+                    <Link to="mobile">移动前端</Link>
                     <Link to="skill">授人以渔</Link>
                     <Link to="ui">UI设计</Link>
                     <Link to="wordpress">WP视点</Link>
