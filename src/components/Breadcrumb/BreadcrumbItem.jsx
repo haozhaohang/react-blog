@@ -1,4 +1,4 @@
-import react, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 class BreadcrumbItem extends PureComponent {
 
