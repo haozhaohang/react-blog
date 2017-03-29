@@ -1,27 +1,29 @@
 .topRead{
-    margin-bottom: 30px;
     background-color: #2d373c;
+    padding-bottom: 10px;
     &:after {
+        display: block;
         width: 300px;
         height: 10px;
         position: relative;
-        top: 9px;
-        content: "";
-        // background: url( './img/topReadbg.png' ) no-repeat;
+        top: 11px;
+        content: '';
+        background: url( './img/topReadbg.png' ) no-repeat;
     }
 }
 
 .title {
-    width: 100%;
     height: 30px;
+
     h3 {
+        display: inline-block;
         text-indent: 30px;
         color: #39c;
-        display: inline-block;
         font-size: 16px;
         line-height: 30px;
         font-weight: 400;
     }
+
     span {
         display: inline-block;
         font-size: 10px;
@@ -32,13 +34,14 @@
 
 .list {
     width: 255px;
-    margin-left: 5px;
+    margin-left: 30px;
+
     li {
        height: 24px;
-       margin-left: 25px;
        color: #656f79;
        transition: .4s;
        list-style: square;
+
        a {
             line-height: 24px;
             color: #fff;
@@ -47,6 +50,7 @@
                 color: #39c;
             }
        }
+
        &:hover {
             color: #fff;
         }

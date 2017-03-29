@@ -1,5 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
-// import BreadcrumbItem from './BreadcrumbItem';
+
+import style from './index.scss';
 
 class Breadcrumb extends PureComponent {
 
@@ -7,7 +8,7 @@ class Breadcrumb extends PureComponent {
         const { children, ...resetProps } = this.props;
 
         return (
-            <span>
+            <span className={style.container}>
                 {children}
             </span>
         );

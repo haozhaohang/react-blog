@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 
 import Layout from 'Containers/Layout';
 import Home from 'Containers/Home';
+import Web from 'Containers/Web';
 
 import rootReducer from 'Reducers';
 
@@ -31,7 +32,7 @@ export default class App extends Component {
                 <Router history={browserHistory}>
                     <Route path="/" component={Layout}>
                         <IndexRoute component={Home} />
-                        <Route />
+                        <Route path="web" component={Web} />
                     </Route>
                 </Router>
             </Provider>

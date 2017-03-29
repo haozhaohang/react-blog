@@ -1,5 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react';
 
+import style from './index.scss';
+
 class BreadcrumbItem extends PureComponent {
 
     static defaultProps = {
@@ -19,7 +21,7 @@ class BreadcrumbItem extends PureComponent {
         return (
             <span>
                 {item}
-                <span>
+                <span className={style.separator}>
                     {separator}
                 </span>
             </span>

@@ -1,6 +1,5 @@
 .friendlyLink {
     position: relative;
-    margin-bottom: 20px;
     padding: 5px;
     background: #fff;
 }
@@ -17,7 +16,7 @@
         line-height: 30px;
         text-indent: 2px;
         border-bottom: 2px solid #39c;
-        foont-weight: 400;
+        font-weight: 400;
         a {
             color: #000;
             &:hover {
@@ -36,13 +35,12 @@
 .list {
     width: 100%;
     margin-top: 2px;
-    position: absolute;
-    top: 37px;
-    left: 0;
+    position: relative;
+    top: 4px;
+    left: -5px;
     margin-bottom: 4px;
     transition: left .3s cubic-bezier(.45,.05,.55,.95);
     li {
-        float: left;
         width: 290px;
         height: 24px;
         margin: 0 5px;

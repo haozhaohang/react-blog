@@ -86,13 +86,21 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+        ],
+      },
+      {
         test: /\.(sass|scss)$/,
         use: [
           "style-loader",
           {
             loader: "css-loader",
             options: {
-              modules: true,
+              modules: true, // css-modules
+              localIdentName: "[path][name]---[local]---[hash:base64:5]", // 默认是哈希算法[hash:base64], 可以进行定制哈希字符串格式
             },
           },
           "sass-loader",
@@ -110,19 +118,19 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.jsx?$/,
-        include: SRC_PATH,
-        enforce: 'pre',
-        use: [
-          {
-            loader: 'eslint-loader',
-            options: {
-              emitWarning: true,
-            },
-          },
-        ],
-      }
+      // {
+      //   test: /\.jsx?$/,
+      //   include: SRC_PATH,
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       loader: 'eslint-loader',
+      //       options: {
+      //         emitWarning: true,
+      //       },
+      //     },
+      //   ],
+      // }
     ],
   },
 
