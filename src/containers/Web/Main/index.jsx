@@ -22,6 +22,21 @@ class Main extends Component {
                     <li>
                         <Article />
                     </li>
+                    <li>
+                        <Article />
+                    </li>
+                    <li>
+                        <Article />
+                    </li>
+                    <li>
+                        <Article />
+                    </li>
+                    <li>
+                        <Article />
+                    </li>
+                    <li>
+                        <Article />
+                    </li>
                 </ul>
             </div>
         );

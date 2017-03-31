@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import style from './index.scss';
+import titleImg from './img/title.jpg';
 
 class Article extends Component {
     render() {
@@ -14,7 +15,7 @@ class Article extends Component {
                     </h2>
 
                     <a href="">
-                        <img width="570" height="200" src="img/title.jpg" />
+                        <img width="570" height="200" src={titleImg} />
                     </a>
 
                     <section className={style.main}>
