@@ -5,17 +5,17 @@ import style from './index.scss';
 class BreadcrumbItem extends PureComponent {
 
     static defaultProps = {
-        separator: '/'
+        separator: '/',
     };
 
     render() {
         const { separator, children, ...resetProps } = this.props;
         let item;
 
-        if ( 'href' in this.props ) {
-            item = <a {...resetProps}>{children}</a>
+        if ('href' in this.props) {
+            item = <a {...resetProps}>{children}</a>;
         } else {
-            item = <span {...resetProps}>{children}</span>
+            item = <span {...resetProps}>{children}</span>;
         }
 
         return (
@@ -28,5 +28,15 @@ class BreadcrumbItem extends PureComponent {
         );
     }
 }
+
+BreadcrumbItem.propTypes = {
+    children: PropTypes.node,
+    separator: PropTypes.string,
+};
+
+BreadcrumbItem.defaultProps = {
+    children: [],
+    separator: '/',
+};
 
 export default BreadcrumbItem;

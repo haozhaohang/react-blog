@@ -5,77 +5,104 @@ import style from './index.scss';
 
 let timer;
 
+const handlePicOver = () => {
+    clearInterval(timer);
+};
+
 class Banner extends Component {
-    constructor( props ) {
-        super( props );
+    constructor(props) {
+        super(props);
+
         this.state = {
-            currentRotate: 0
+            currentRotate: 0,
         };
+
+        this.handleChangePrev = this.handleChangePrev.bind(this);
+        this.handleChangeNext = this.handleChangeNext.bind(this);
+        this.handlePicOut = this.handlePicOut.bind(this);
     }
-    _createList() {
-        let iLen = 1200 / 40;
-        let aHtml = [];
+
+    componentWillUnmount() {
+        clearInterval(timer);
+    }
+
+    componentDidlMount() {
+        timer = setInterval(() => {
+            this.setState({
+                currentRotate: this.state.currentRotate - 90,
+            });
+        }, 6000);
+    }
+
+    handleCreateList() {
+        const iLen = 1200 / 40;
+        const aHtml = [];
         let zIndex = 0;
         let aStyle = {};
         let liStyle = {};
-        for ( let i = 0; i < iLen; i++ ) {
-            i > iLen / 2 ? zIndex-- : zIndex ++;
-            aStyle = { backgroundPosition: `${ -40 * i }px 0px` };
-            liStyle = { transform: `rotateX( ${ this.state.currentRotate }deg )`, zIndex: zIndex, transition: `0.4s ${ i * 0.05 }s all ease` };
+        for (let i = 0; i < iLen; i += 1) {
+            i > iLen / 2 ? zIndex-- : zIndex++;
+            aStyle = { backgroundPosition: `${-40 * i}px 0px` };
+            liStyle = { transform: `rotateX( ${this.state.currentRotate}deg )`, zIndex, transition: `0.4s ${i * 0.05}s all ease` };
             aHtml.push(
-                <li key={ 'li' + i } style={ liStyle }>
-                    <a style={ aStyle } href="javascript:;"></a>
-                    <a style={ aStyle } href="javascript:;"></a>
-                    <a style={ aStyle } href="javascript:;"></a>
-                    <a style={ aStyle } href="javascript:;"></a>
-                    <span></span>
-                    <span></span>
-                </li>
+                <li key={`li${i}`} style={liStyle}>
+                    <a style={aStyle} href="javascript:void(0)" />
+                    <a style={aStyle} href="javascript:" />
+                    <a style={aStyle} href="javascript:" />
+                    <a style={aStyle} href="javascript:" />
+                    <span />
+                    <span />
+                </li>,
             );
         }
         return aHtml;
     }
-    _changePrev() {
+
+    handleChangePrev() {
         this.setState({
-           currentRotate: this.state.currentRotate + 90
+            currentRotate: this.state.currentRotate + 90,
         });
     }
-    _changeNext() {
+
+    handleChangeNext() {
         this.setState({
-            currentRotate: this.state.currentRotate - 90
+            currentRotate: this.state.currentRotate - 90,
         });
     }
-    _picOver() {
-        clearInterval( timer );
-    }
-    _picOut() {
-        timer = setInterval( ()=>{
+
+    handlePicOut() {
+        timer = setInterval(() => {
             this.setState({
-                currentRotate: this.state.currentRotate - 90
-            })
-        }, 6000 );
+                currentRotate: this.state.currentRotate - 90,
+            });
+        }, 6000);
     }
-    componentDidlMount() {
-        timer = setInterval( ()=>{
-            this.setState({
-                currentRotate: this.state.currentRotate - 90
-            })
-        }, 6000 );
-    }
-    componentWillUnmount() {
-        clearInterval( timer );
-    }
+
     render() {
-        return(
-            <div className={ style.banner }>
-                <ul className={ style.picList } onMouseOver={ this._picOver.bind( this ) } onMouseOut={ this._picOut.bind( this ) }>
+        return (
+            <div className={style.banner}>
+                <ul
+                    className={style.picList}
+                    onMouseOver={handlePicOver}
+                    onMouseOut={this.handlePicOut}
+                >
                     {
-                        this._createList()
+                        this.handleCreateList()
                     }
                 </ul>
-                <ol className={ style.btnList }></ol>
-                <span className={ style.prev } onClick={ this._changePrev.bind( this ) } onMouseOver={ this._picOver.bind( this ) } onMouseOut={ this._picOut.bind( this ) }></span>
-                <span className={ style.next } onClick={ this._changeNext.bind( this ) } onMouseOver={ this._picOver.bind( this ) } onMouseOut={ this._picOut.bind( this ) }></span>
+                <ol className={style.btnList} />
+                <span
+                    className={style.prev}
+                    onClick={this.handleChangePrev}
+                    onMouseOver={handlePicOver}
+                    onMouseOut={this.handlePicOut}
+                />
+                <span
+                    className={style.next}
+                    onClick={this.handleChangeNext}
+                    onMouseOver={handlePicOver}
+                    onMouseOut={this.handlePicOut}
+                />
             </div>
         );
     }

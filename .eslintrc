@@ -18,13 +18,22 @@
         // 缩进设置
         "indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
+        // 设置jsx中属性的缩进
+        "react/jsx-indent-props": ["error", 4],
         // jsx语法中属性使用双引号
         "jsx-quotes": ["error", "prefer-double"],
+        // 设置换行符的类型
+        "linebreak-style": ["error", "unix"],
         "func-names": [2, "as-needed"],
         "quotes": [2, "single"],
         "strict": [2, "never"],
         "react/jsx-uses-react": 2,
         "react/jsx-uses-vars": 2,
         "react/react-in-jsx-scope": 2,
-    },
+        // 设置非交互元素不能有鼠标 键盘事件
+        "jsx-a11y/no-static-element-interactions": "off",
+        // 设置PropTypes不可设置的类型
+        "react/forbid-prop-types": ["error", { forbid: ["any"] }],
+        "import/no-extraneous-dependencies": ["error", { devDependencies: ["*.js", "config/*.js"] }],
+    }
 }

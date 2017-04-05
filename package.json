@@ -9,7 +9,8 @@
     "clear": "rimraf ./dist",
     "postbuild": "copyfiles index.html dist",
     "build": "cross-env NODE_ENV=production webpack -p --config ./build/webpack.config.production.js",
-    "lint": "eslint src"
+    "lint": "eslint src --ext \".js,.jsx\" --no-ignore .eslintrc.j",
+    "lint:fix": "eslint --fix src --ext \".js,.jsx\" --no-ignore .eslintrc.js"
   },
   "author": "Zhaohang Hao",
   "license": "ISC",
@@ -17,7 +18,6 @@
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.4.0",
-    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-2": "^6.22.0",
@@ -34,16 +34,15 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "node-sass": "^4.5.0",
-    "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.14.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2",
-    "whatwg-fetch": "^2.0.3"
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "babel-polyfill": "^6.23.0",
     "normalize.css": "^6.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -52,6 +51,8 @@
     "react-router-redux": "^4.0.8",
     "react-thunk": "^1.0.0",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "whatwg-fetch": "^2.0.3"
   }
 }

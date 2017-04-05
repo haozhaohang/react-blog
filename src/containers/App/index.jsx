@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -24,18 +24,16 @@ const store = createStore(
     applyMiddleware(...middlewares),
 );
 
+const App = () =>
+    (
+        <Provider store={store}>
+            <Router history={browserHistory}>
+                <Route path="/" component={Layout}>
+                    <IndexRoute component={Home} />
+                    <Route path="web" component={Web} />
+                </Route>
+            </Router>
+        </Provider>
+    );
 
-export default class App extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Router history={browserHistory}>
-                    <Route path="/" component={Layout}>
-                        <IndexRoute component={Home} />
-                        <Route path="web" component={Web} />
-                    </Route>
-                </Router>
-            </Provider>
-        );
-    }
-}
+export default App;

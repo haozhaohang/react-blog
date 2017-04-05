@@ -21,9 +21,8 @@ export function buildQuery(data) {
 }
 
 export async function request(input, opt) {
-
     const init = Object.assign({
-        credentials: 'include'
+        credentials: 'include',
     }, opt);
 
     let res;
@@ -35,45 +34,46 @@ export async function request(input, opt) {
     }
 
     let data;
-    console.log('-------');
-    console.log(res);
+
     try {
-        console.log('try');
         data = await res.json();
-        console.log(data);
     } catch (e) {
         throw e;
     }
-    console.log(data);
+
     return data;
 }
 
 export async function get(url, params = {}, opt = {}) {
     const init = Object.assign({
-        method: 'GET'
+        method: 'GET',
     }, opt);
 
     const paramsStr = buildQuery(params);
 
     const urlWithQuery = url + (paramsStr ? `?${paramsStr}` : '');
-    return await request(urlWithQuery, init);
+    const res = await request(urlWithQuery, init);
+
+    return res;
 }
 
 export async function post(url, params = {}) {
     const headers = {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
     };
 
     const init = Object.assign({
         method: 'POST',
         body: buildQuery(params),
-        headers
+        headers,
     }, {});
 
-    return await request(url, init);
+    const res = await request(url, init);
+
+    return res;
 }
 
 export default {
     get,
-    post
+    post,
 };

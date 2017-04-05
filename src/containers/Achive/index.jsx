@@ -5,46 +5,48 @@ import style from './index.scss';
 
 class Achive extends Component {
     constructor(props) {
-        super( props );
+        super(props);
+
         this.state = {
-            currentList: 'hot'
+            currentList: 'hot',
         };
+
+        this.handleChangeAchiveList = this.handleChangeAchiveList.bind(this);
     }
-    _changeAchiveList( type ) {
-        console.log( type );
+    handleChangeAchiveList(type) {
         this.setState({
-            currentList: type
+            currentList: type,
         });
     }
     render() {
-        return(
-            <section className={ style.achive }>
-                <div className={ style.title }>
-                    <h3 className={ this.state.currentList === 'hot' ? style.action : '' } onMouseOver={ this._changeAchiveList.bind( this, 'hot' ) }>热门文章</h3>
-                    <h3 className={ this.state.currentList === 'new' ? style.action : '' } onMouseOver={ this._changeAchiveList.bind( this, 'new' ) }>最新文章</h3>
-                    <h3 className={ this.state.currentList === 'random' ? style.action : '' } onMouseOver={ this._changeAchiveList.bind( this, 'random' ) }>随机文章</h3>
+        return (
+            <section className={style.achive}>
+                <div className={style.title}>
+                    <h3 className={this.state.currentList === 'hot' ? style.action : ''} onMouseOver={() => this.handleChangeAchiveList('hot')}>热门文章</h3>
+                    <h3 className={this.state.currentList === 'new' ? style.action : ''} onMouseOver={() => this.handleChangeAchiveList('new')}>最新文章</h3>
+                    <h3 className={this.state.currentList === 'random' ? style.action : ''} onMouseOver={() => this.handleChangeAchiveList('random')}>随机文章</h3>
                 </div>
                 {
                     this.state.currentList === 'hot'
                     ? <ul>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li><li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li><li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li><li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li><li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                     </ul>
@@ -54,19 +56,19 @@ class Achive extends Component {
                     this.state.currentList === 'new'
                     ? <ul>
                         <li>
-                            <a href="javascript:;">博文二</a>
+                            <a>博文二</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                     </ul>
@@ -76,23 +78,23 @@ class Achive extends Component {
                     this.state.currentList === 'random'
                     ? <ul>
                         <li>
-                            <a href="javascript:;">博文三</a>
+                            <a>博文三</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                         <li>
-                            <a href="javascript:;">博文一</a>
+                            <a>博文一</a>
                             <span>(849)</span>
                         </li>
                     </ul>

@@ -13,9 +13,13 @@ async function request(method, url, params) {
 }
 
 export async function get(...arg) {
-    return await request('get', ...arg);
+    const res = await request('get', ...arg);
+
+    return res;
 }
 
 export async function post(...arg) {
-    return await request('post', ...arg);
+    const res = await request('post', ...arg);
+
+    return res;
 }

@@ -6,7 +6,7 @@ import style from './index.scss';
 export default function Layout({ children }) {
     return (
         <div className={style.header}>
-            <Header / >
+            <Header />
             {children}
         </div>
     );

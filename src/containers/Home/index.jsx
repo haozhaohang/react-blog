@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { get, post } from 'Assets/js/request';
-
-// css
-import style from './index.scss';
+import { get } from 'Assets/js/request';
 
 // Component
 import Banner from 'Containers/Banner';
 import Main from './Main';
 import Aside from './Aside';
+
+// css
+import style from './index.scss';
 
 class Home extends Component {
     componentDidMount() {
@@ -21,17 +21,16 @@ class Home extends Component {
                 return;
             }
             console.log(payload);
-            return;
         }
 
         fetchQuery();
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Banner />
-                <div className={ style.content }>
+                <div className={style.content}>
                     <Main />
                     <Aside />
                 </div>

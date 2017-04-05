@@ -1,18 +1,22 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
+// css
 import style from './index.scss';
 
-class Breadcrumb extends PureComponent {
+const Breadcrumb = ({ children }, ...resetProps) => (
+    <span className={style.container} {...resetProps} >
+        {children}
+    </span>
+    );
 
-    render() {
-        const { children, ...resetProps } = this.props;
+Breadcrumb.propTypes = {
+    children: PropTypes.node,
+    resetProps: PropTypes.object,
+};
 
-        return (
-            <span className={style.container}>
-                {children}
-            </span>
-        );
-    }
-}
+Breadcrumb.defaultProps = {
+    children: [],
+    resetProps: {},
+};
 
 export default Breadcrumb;
