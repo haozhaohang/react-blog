@@ -20,7 +20,7 @@ $arrow_height: 50px;
         position: relative;
         transform-style: preserve-3d;
         transform-origin: center center -150px;
-        a {
+        span {
             width: inherit;
             height: inherit;
             position: absolute;
@@ -50,7 +50,7 @@ $arrow_height: 50px;
                 transform: rotateX(-90deg); top:300px;
             }
         }
-        span {
+        i {
             width: 300px;
             height: inherit;
             background: #eee;

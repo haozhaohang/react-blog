@@ -11,12 +11,10 @@ const Breadcrumb = ({ children }, ...resetProps) => (
 
 Breadcrumb.propTypes = {
     children: PropTypes.node,
-    resetProps: PropTypes.object,
 };
 
 Breadcrumb.defaultProps = {
     children: [],
-    resetProps: {},
 };
 
 export default Breadcrumb;

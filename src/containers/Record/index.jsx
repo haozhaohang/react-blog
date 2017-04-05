@@ -7,7 +7,7 @@ import Aside from './Aside';
 // css
 import style from './index.scss';
 
-const Web = () =>
+const Record = () =>
     (
         <div className={style.container}>
             <div className={style.main}>
@@ -19,4 +19,4 @@ const Web = () =>
         </div>
     );
 
-export default Web;
+export default Record;

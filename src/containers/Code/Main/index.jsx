@@ -14,7 +14,7 @@ const Main = () =>
         <div className={style.main}>
             <Breadcrumb>
                 <BreadcrumbItem href="/">首页</BreadcrumbItem>
-                <BreadcrumbItem>Web前端</BreadcrumbItem>
+                <BreadcrumbItem>程序人生</BreadcrumbItem>
             </Breadcrumb>
             <ul className={style.list}>
                 <li>

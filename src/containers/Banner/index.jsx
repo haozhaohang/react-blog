@@ -50,8 +50,8 @@ class Banner extends Component {
                     <span style={aStyle} />
                     <span style={aStyle} />
                     <span style={aStyle} />
-                    <span />
-                    <span />
+                    <i />
+                    <i />
                 </li>,
             );
         }

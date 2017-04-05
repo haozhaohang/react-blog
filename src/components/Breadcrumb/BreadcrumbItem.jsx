@@ -19,7 +19,7 @@ class BreadcrumbItem extends PureComponent {
         }
 
         return (
-            <span>
+            <span className={style.item}>
                 {item}
                 <span className={style.separator}>
                     {separator}
