@@ -7,7 +7,7 @@ const ArticleItem = () =>
     (
         <div className={style.wrap}>
             <div className={style.img}>
-                <a />
+                <span />
             </div>
             <div className={style.main}>
                 <h3 className={style.title}><a> ES6知识点集锦</a></h3>

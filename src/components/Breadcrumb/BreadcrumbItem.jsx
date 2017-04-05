@@ -9,13 +9,13 @@ class BreadcrumbItem extends PureComponent {
     };
 
     render() {
-        const { separator, children, ...resetProps } = this.props;
+        const { separator, children, ...restProps } = this.props;
         let item;
 
         if ('href' in this.props) {
-            item = <a {...resetProps}>{children}</a>;
+            item = <a {...restProps}>{children}</a>;
         } else {
-            item = <span {...resetProps}>{children}</span>;
+            item = <span {...restProps}>{children}</span>;
         }
 
         return (

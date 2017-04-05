@@ -41,15 +41,15 @@ class Banner extends Component {
         let aStyle = {};
         let liStyle = {};
         for (let i = 0; i < iLen; i += 1) {
-            i > iLen / 2 ? zIndex-- : zIndex++;
+            i > iLen / 2 ? zIndex -= 1 : zIndex += 1;
             aStyle = { backgroundPosition: `${-40 * i}px 0px` };
             liStyle = { transform: `rotateX( ${this.state.currentRotate}deg )`, zIndex, transition: `0.4s ${i * 0.05}s all ease` };
             aHtml.push(
                 <li key={`li${i}`} style={liStyle}>
-                    <a style={aStyle} href="javascript:void(0)" />
-                    <a style={aStyle} href="javascript:" />
-                    <a style={aStyle} href="javascript:" />
-                    <a style={aStyle} href="javascript:" />
+                    <span style={aStyle} />
+                    <span style={aStyle} />
+                    <span style={aStyle} />
+                    <span style={aStyle} />
                     <span />
                     <span />
                 </li>,

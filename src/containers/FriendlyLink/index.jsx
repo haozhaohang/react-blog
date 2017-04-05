@@ -9,7 +9,7 @@ const FriendlyLink = () =>
             <div>
                 <div className={style.title}>
                     <h3>
-                        <a href="javascript:;" title="查看所有标签">友情链接</a>
+                        <a title="查看所有标签">友情链接</a>
                     </h3>
                     <span>Friendly Link</span>
                 </div>

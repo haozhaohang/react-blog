@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
-import Breadcrumb from 'Components/Breadcrumb';
-import style from './index.scss';
+import React from 'react';
+// import Breadcrumb from 'Components/Breadcrumb';
 
 // Component
 import Main from './Main';
 import Aside from './Aside';
 
-const BreadcrumbItem = Breadcrumb.Item;
+// css
+import style from './index.scss';
 
-class Web extends Component {
-    render() {
-        return (
-            <div className={style.container}>
-                <div className={style.main}>
-                    <Main />
-                </div>
-                <div className={style.aside}>
-                    <Aside />
-                </div>
+// const BreadcrumbItem = Breadcrumb.Item;
+
+const Web = () =>
+    (
+        <div className={style.container}>
+            <div className={style.main}>
+                <Main />
             </div>
-        );
-    }
-}
+            <div className={style.aside}>
+                <Aside />
+            </div>
+        </div>
+    );
 
 export default Web;
