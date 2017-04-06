@@ -93,6 +93,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.styl$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "stylus-loader"
+        ],
+      },
+      {
         test: /\.(sass|scss)$/,
         use: [
           "style-loader",

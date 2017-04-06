@@ -14,6 +14,7 @@ import Ui from 'Containers/Ui';
 import Wordpress from 'Containers/Wordpress';
 import Record from 'Containers/Record';
 import Code from 'Containers/Code';
+import Manage from 'Containers/Manage';
 
 import rootReducer from 'Reducers';
 
@@ -44,6 +45,7 @@ const App = () =>
                     <Route path="record" component={Record} />
                     <Route path="code" component={Code} />
                 </Route>
+                <Route path="manage" component={Manage} />
             </Router>
         </Provider>
     );
