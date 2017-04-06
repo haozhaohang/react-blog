@@ -7,7 +7,7 @@ import Main from './Main';
 import Aside from './Aside';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 class Home extends Component {
     componentDidMount() {
@@ -29,9 +29,9 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="home-wrapper">
                 <Banner />
-                <div className={style.content}>
+                <div className="home-container clearfix">
                     <Main />
                     <Aside />
                 </div>

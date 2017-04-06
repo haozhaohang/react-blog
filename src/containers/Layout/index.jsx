@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import Header from 'Containers/Header';
 
-import style from './index.scss';
+import './index.styl';
 
 const Layout = ({ children }) =>
     (
-        <div className={style.header}>
+        <div className="layout-wrapper">
             <Header />
             {children}
         </div>
