@@ -1,10 +1,5 @@
-function goodsStat(state = {}, action) {
-    switch (action.type) {
-    default:
-        return state;
-    }
-}
+import userList from './user';
 
 export default {
-    goodsStat,
+    userList,
 };

@@ -34,7 +34,10 @@
         "jsx-a11y/no-static-element-interactions": "off",
         // 设置PropTypes不可设置的类型
         "react/forbid-prop-types": ["error", { forbid: ["any"] }],
+        // 设置过滤加载的包
         "import/no-extraneous-dependencies": ["error", { devDependencies: ["*.js", "build/*.js"] }],
+        // 设置阴影变量
+        "no-shadow": ["error", { "builtinGlobals": false, "hoist": "never", "allow": [] }],
     },
     "settings": {
         "import/resolver": {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 
 import './index.styl';
@@ -19,8 +19,9 @@ class Manage extends Component {
     render() {
         const { collapsed } = this.state;
 
+        const { children } = this.props;
         return (
-            <Layout className="manage-containers">
+            <Layout className="manage-wrapper">
                 <Sider
                     trigger={null}
                     collapsible
@@ -43,20 +44,28 @@ class Manage extends Component {
                     </Menu>
                 </Sider>
                 <Layout>
-                    <Header style={{ background: '#fff', padding: 0 }}>
+                    <Header className="manage-header">
                         <Icon
                             className="trigger"
-                            type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                            type={collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggle}
                         />
                     </Header>
-                    <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
-                            Content
+                    <Content className="manage-containers">
+                        {children}
                     </Content>
                 </Layout>
             </Layout>
         );
     }
 }
+
+Manage.propTypes = {
+    children: PropTypes.node,
+};
+
+Manage.defaultProps = {
+    children: [],
+};
 
 export default Manage;

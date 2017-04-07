@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { routerReducer, routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import Layout from 'Containers/Layout';
@@ -14,7 +14,9 @@ import Ui from 'Containers/Ui';
 import Wordpress from 'Containers/Wordpress';
 import Record from 'Containers/Record';
 import Code from 'Containers/Code';
+
 import Manage from 'Containers/Manage';
+import User from 'Containers/User';
 
 import rootReducer from 'Reducers';
 
@@ -31,10 +33,12 @@ const store = createStore(
     applyMiddleware(...middlewares),
 );
 
+const history = syncHistoryWithStore(browserHistory, store);
+
 const App = () =>
     (
         <Provider store={store}>
-            <Router history={browserHistory}>
+            <Router history={history}>
                 <Route path="/" component={Layout}>
                     <IndexRoute component={Home} />
                     <Route path="web" component={Web} />
@@ -45,7 +49,9 @@ const App = () =>
                     <Route path="record" component={Record} />
                     <Route path="code" component={Code} />
                 </Route>
-                <Route path="manage" component={Manage} />
+                <Route path="manage" component={Manage}>
+                    <IndexRoute component={User} />
+                </Route>
             </Router>
         </Provider>
     );
