@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Layout, Menu, Icon } from 'antd';
+import { Link } from 'react-router';
 
 import './index.styl';
 
@@ -7,12 +8,20 @@ const { Header, Sider, Content } = Layout;
 const { Item: MenuItem } = Menu;
 
 class Manage extends Component {
-    state = {
-        collapsed: false,
-    };
-    toggle = () => {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            collapsed: false,
+        };
+
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        const { collapsed } = this.state;
         this.setState({
-            collapsed: !this.state.collapsed,
+            collapsed: !collapsed,
         });
     }
 
@@ -28,18 +37,24 @@ class Manage extends Component {
                     collapsed={collapsed}
                 >
                     <div className="logo" />
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                        <MenuItem key="1">
-                            <Icon type="user" />
-                            <span className="nav-text">用户管理</span>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['user']} onClick={this.handleClick}>
+                        <MenuItem key="user">
+                            <Link to="/manage">
+                                <Icon type="user" />
+                                <span className="nav-text">用户管理</span>
+                            </Link>
                         </MenuItem>
                         <MenuItem key="2">
-                            <Icon type="video-camera" />
-                            <span className="nav-text">分类管理</span>
+                            <Link to="/">
+                                <Icon type="video-camera" />
+                                <span className="nav-text">分类管理</span>
+                            </Link>
                         </MenuItem>
                         <MenuItem key="3">
-                            <Icon type="upload" />
-                            <span className="nav-text">内容管理</span>
+                            <Link to="/manage">
+                                <Icon type="upload" />
+                                <span className="nav-text">内容管理</span>
+                            </Link>
                         </MenuItem>
                     </Menu>
                 </Sider>

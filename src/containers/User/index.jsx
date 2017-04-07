@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'antd';
-import { fetchList } from 'Actions/user';
+import { Button, Table } from 'antd';
+import { fetchList, fetchUserDel } from 'Actions/user';
 import { updateQuery } from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
 
@@ -31,9 +31,24 @@ class User extends Component {
                     return res;
                 },
             },
+            {
+                title: '操作',
+                render: ({ _id }) =>
+                (
+                    <div>
+                        <Button type="primary"
+                            onClick={() => this.handleDel(_id)}
+                        >
+                            编辑
+                        </Button>
+                        <Button type="danger">删除</Button>
+                    </div>
+                ),
+            },
         ];
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleDel = this.handleDel.bind(this);
     }
 
     componentDidMount() {
@@ -65,6 +80,14 @@ class User extends Component {
         };
 
         onchange(params);
+    }
+
+    handleDel(val) {
+        const params = {
+            id: val,
+        };
+
+        fetchUserDel(params);
     }
 
     render() {
@@ -106,6 +129,7 @@ const mapStateToProps = ({ userList }, { location }) => {
 
 const mapDispatchToProps = dispatch => ({
     fetchList: opts => dispatch(fetchList(opts)),
+    fetchUserDel: opts => dispatch(fetchUserDel(opts)),
     onchange: opts => dispatch(updateQuery(opts)),
 });
 

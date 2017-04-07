@@ -28,3 +28,18 @@ export function fetchList(opts = {}) {
         dispatch(finishUserList(payload));
     };
 }
+
+export function fetchUserDel(opts = {}) {
+    return async (dispatch) => {
+        const params = Object.assign({}, opts);
+        let payload;
+
+        try {
+            payload = await post(api.API_USER_DEL, params);
+        } catch (e) {
+            throw e;
+        }
+
+        console.log(payload);
+    }
+}
