@@ -36,12 +36,17 @@ class User extends Component {
                 render: ({ _id }) =>
                 (
                     <div>
-                        <Button type="primary"
-                            onClick={() => this.handleDel(_id)}
+                        <Button
+                            type="primary"
                         >
                             编辑
                         </Button>
-                        <Button type="danger">删除</Button>
+                        <Button
+                            type="danger"
+                            onClick={() => this.handleDel(_id)}
+                        >
+                            删除
+                        </Button>
                     </div>
                 ),
             },
@@ -83,6 +88,7 @@ class User extends Component {
     }
 
     handleDel(val) {
+        const { fetchUserDel } = this.props;
         const params = {
             id: val,
         };
@@ -139,6 +145,7 @@ User.propTypes = {
     loading: PropTypes.bool.isRequired,
     pageIndex: PropTypes.number.isRequired,
     fetchList: PropTypes.func.isRequired,
+    fetchUserDel: PropTypes.func.isRequired,
     onchange: PropTypes.func.isRequired,
 };
 

@@ -1,6 +1,6 @@
 import * as api from 'Constants/api';
 import * as actionType from 'Constants/actionType';
-import { get } from 'Assets/js/request';
+import { get, post } from 'Assets/js/request';
 import { actionCreator } from 'Assets/js/util';
 
 const addRequest = actionCreator(actionType.USER_LIST_REQUEST);
@@ -30,16 +30,16 @@ export function fetchList(opts = {}) {
 }
 
 export function fetchUserDel(opts = {}) {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
+        const { pageIndex } = getState().routing.locationBeforeTransitions.query;
         const params = Object.assign({}, opts);
-        let payload;
 
         try {
-            payload = await post(api.API_USER_DEL, params);
+            await post(api.API_USER_DEL, params);
         } catch (e) {
             throw e;
         }
 
-        console.log(payload);
-    }
+        dispatch(fetchList({ pageIndex }));
+    };
 }
