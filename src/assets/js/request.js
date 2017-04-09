@@ -1,4 +1,5 @@
 import * as http from './http';
+import { message } from 'antd';
 
 async function request(method, url, params) {
     let res;
@@ -6,6 +7,7 @@ async function request(method, url, params) {
     try {
         res = await http[method](url, params);
     } catch (e) {
+        message.error(e.errno === 4 ? e.data.msg : e.msg);
         throw e;
     }
 

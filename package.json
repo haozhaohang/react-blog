@@ -9,7 +9,7 @@
     "clear": "rimraf ./dist",
     "postbuild": "copyfiles index.html dist",
     "build": "cross-env NODE_ENV=production webpack -p --config ./build/webpack.config.production.js",
-    "lint": "eslint src --ext \".js,.jsx\" --no-ignore .eslintrc.j",
+    "lint": "eslint src --ext \".js,.jsx\" --no-ignore .eslintrc.js",
     "lint:fix": "eslint --fix src --ext \".js,.jsx\" --no-ignore .eslintrc.js"
   },
   "author": "Zhaohang Hao",

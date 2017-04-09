@@ -1,5 +1,12 @@
 import 'whatwg-fetch'; // fetch 的polyfill,是低版本的浏览器也支持fetch
 
+class CustomFetchError {
+    constructor(data) {
+        this.msg = data.message;
+        this.data = data;
+    }
+}
+
 export function buildQuery(data) {
     const toString = Object.prototype.toString;
 
@@ -30,7 +37,11 @@ export async function request(input, opt) {
     try {
         res = await fetch(input, init);
     } catch (e) {
-        throw e;
+        throw new CustomFetchError(e);
+    }
+
+    if (!res.ok) {
+        throw new CustomFetchError(res);
     }
 
     let data;
@@ -38,7 +49,11 @@ export async function request(input, opt) {
     try {
         data = await res.json();
     } catch (e) {
-        throw e;
+        throw new CustomFetchError(e);
+    }
+
+    if (!data || data.error !== 0) {
+        throw new CustomFetchError(data);
     }
 
     return data;

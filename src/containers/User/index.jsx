@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { Button, Table } from 'antd';
 import { fetchList, fetchUserDel } from 'Actions/user';
 import { updateQuery } from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
+
+// css
+import './index.styl';
 
 class User extends Component {
     constructor(props) {
@@ -36,11 +40,13 @@ class User extends Component {
                 render: ({ _id }) =>
                 (
                     <div>
-                        <Button
-                            type="primary"
-                        >
-                            编辑
-                        </Button>
+                        <Link to={`manage/user/edit?id=${_id}`}>
+                            <Button
+                                type="primary"
+                            >
+                                编辑
+                            </Button>
+                        </Link>
                         <Button
                             type="danger"
                             onClick={() => this.handleDel(_id)}
@@ -101,11 +107,18 @@ class User extends Component {
         const pagination = {
             total,
             current: pageIndex,
-            pageSize: 2,
+            pageSize: 10,
         };
 
         return (
-            <div>
+            <div className="user-wrapper">
+                <div className="filter-containers">
+                    <Link to="/manage/user/edit">
+                        <Button type="primary" icon="user-add">
+                            添加用户
+                        </Button>
+                    </Link>
+                </div>
                 <div>
                     <Table
                         columns={this.columns}

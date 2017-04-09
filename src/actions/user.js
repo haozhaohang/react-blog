@@ -7,7 +7,7 @@ const addRequest = actionCreator(actionType.USER_LIST_REQUEST);
 const rejectRequest = actionCreator(actionType.USER_LIST_FAIL);
 const finishUserList = actionCreator(actionType.USER_LIST_SUCCESS);
 
-const pageSize = 2;
+const pageSize = 10;
 
 export function fetchList(opts = {}) {
     return async (dispatch) => {

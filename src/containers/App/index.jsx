@@ -17,6 +17,7 @@ import Code from 'Containers/Code';
 
 import Manage from 'Containers/Manage';
 import User from 'Containers/User';
+import UserEdit from 'Containers/User/Edit';
 
 import rootReducer from 'Reducers';
 
@@ -51,6 +52,7 @@ const App = () =>
                 </Route>
                 <Route path="manage" component={Manage}>
                     <IndexRoute component={User} />
+                    <Route path="user/edit" component={UserEdit} />
                 </Route>
             </Router>
         </Provider>
