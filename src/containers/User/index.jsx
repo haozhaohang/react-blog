@@ -1,13 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Button, Table } from 'antd';
+import { Button, Table, Form, Input } from 'antd';
 import { fetchList, fetchUserDel } from 'Actions/user';
 import { updateQuery } from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
 
 // css
 import './index.styl';
+
+const { Item: FormItem } = Form;
 
 class User extends Component {
     constructor(props) {
@@ -19,7 +21,7 @@ class User extends Component {
                 dataIndex: '_id',
             },
             {
-                title: '账号',
+                title: '用户名',
                 dataIndex: 'username',
             },
             {
@@ -113,11 +115,24 @@ class User extends Component {
         return (
             <div className="user-wrapper">
                 <div className="filter-containers">
-                    <Link to="/manage/user/edit">
-                        <Button type="primary" icon="user-add">
-                            添加用户
-                        </Button>
-                    </Link>
+                    <div>
+                        <Form layout="inline">
+                            <FormItem label="用户名">
+                                <Input />
+                            </FormItem>
+
+                            <FormItem>
+                                <Button type="primary" icon="search">搜索</Button>
+                            </FormItem>
+                        </Form>
+                    </div>
+                    <div>
+                        <Link to="/manage/user/edit">
+                            <Button type="primary" icon="user-add">
+                                添加用户
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
                 <div>
                     <Table
