@@ -73,31 +73,31 @@ class UserEdit extends Component {
     }
 
     render() {
-        const { form: { getFieldDecorator } } = this.props;
+        const { info: { username, password, isAdmin }, form: { getFieldDecorator } } = this.props;
 
         const usernameDecorator = getFieldDecorator('username', {
-            initialValue: '',
+            initialValue: username,
             rules: [
                 { required: true, message: '请输入账号名' }
             ],
         });
 
         const passwordDecorator = getFieldDecorator('password', {
-            initialValue: '',
+            initialValue: password,
             rules: [
                 { required: true, message: '请输入密码' }
             ],
         });
 
         const rePasswordDecorator = getFieldDecorator('rePassword', {
-            initialValue: '',
+            initialValue: password,
             rules: [
                 { required: true, message: '请再次输入密码' }
             ],
         });
 
         const isAdminDecorator = getFieldDecorator('isAdmin', {
-            initialValue: 0,
+            initialValue: isAdmin,
             rules: [
                 { required: true, message: '请选择是否是管理员' }
             ],
@@ -147,18 +147,22 @@ class UserEdit extends Component {
     }
 }
 
-const mapStateToProps = ({}, { location: { query } }) => {
+const mapStateToProps = ({ userEdit }, { location: { query } }) => {
+    const { info } = userEdit;
     const { id } = query;
 
     return {
         id,
         status: !id,
+        info,
     };
 };
 
 const mapDispatchToProps = { ...actions };
 
 UserEdit.propTypes = {
+    id: PropTypes.string,
+    info: PropTypes.object.isRequired,
     fetchSubmit: PropTypes.func.isRequired,
 };
 
