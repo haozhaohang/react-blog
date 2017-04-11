@@ -9,6 +9,7 @@ const finishUserList = actionCreator(actionType.USER_LIST_SUCCESS);
 
 const pageSize = 10;
 
+// 获取用户列表
 export function fetchList(opts = {}) {
     return async (dispatch) => {
         dispatch(addRequest());
@@ -29,6 +30,7 @@ export function fetchList(opts = {}) {
     };
 }
 
+// 删除用户
 export function fetchUserDel(opts = {}) {
     return async (dispatch, getState) => {
         const { pageIndex } = getState().routing.locationBeforeTransitions.query;
@@ -41,5 +43,19 @@ export function fetchUserDel(opts = {}) {
         }
 
         dispatch(fetchList({ pageIndex }));
+    };
+}
+
+// 用户搜索
+export function fetchSearch(opts = {}) {
+    return async (dispatch, getState) => {
+        const params = Object.assign({}, opts);
+
+        try {
+            await post(api.API_USER_SEARCH, params);
+        } catch (e) {
+            throw e;
+        }
+
     };
 }

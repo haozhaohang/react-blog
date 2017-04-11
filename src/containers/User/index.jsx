@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Button, Table, Form, Input } from 'antd';
-import { fetchList, fetchUserDel } from 'Actions/user';
+import { fetchList, fetchUserDel, fetchSearch  } from 'Actions/user';
 import { updateQuery } from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
 
@@ -62,6 +62,7 @@ class User extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleDel = this.handleDel.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -104,25 +105,41 @@ class User extends Component {
         fetchUserDel(params);
     }
 
+    // 搜索
+    handleSubmit(e) {
+        console.log(111);
+        e.preventDefault();
+        const { fetchSearch, form: { validateFields } } = this.props;
+
+        validateFields((error, values) => {
+            if (error) {
+                return;
+            }
+
+            fetchSearch(values);
+        })
+    }
+
     render() {
-        const { list, loading, total, pageIndex } = this.props;
+        const { list, loading, total, pageIndex, form: { getFieldDecorator } } = this.props;
         const pagination = {
             total,
             current: pageIndex,
-            pageSize: 10,
         };
+
+        const usernameDecorator = getFieldDecorator('username');
 
         return (
             <div className="user-wrapper">
                 <div className="filter-containers">
                     <div>
-                        <Form layout="inline">
+                        <Form layout="inline" onSubmit={this.handleSubmit}>
                             <FormItem label="用户名">
-                                <Input />
+                                {usernameDecorator(<Input />)}
                             </FormItem>
 
                             <FormItem>
-                                <Button type="primary" icon="search">搜索</Button>
+                                <Button type="primary" htmlType="submit" icon="search">搜索</Button>
                             </FormItem>
                         </Form>
                     </div>
@@ -164,6 +181,7 @@ const mapStateToProps = ({ userList }, { location }) => {
 const mapDispatchToProps = dispatch => ({
     fetchList: opts => dispatch(fetchList(opts)),
     fetchUserDel: opts => dispatch(fetchUserDel(opts)),
+    fetchSearch: opts => dispatch(fetchSearch(opts)),
     onchange: opts => dispatch(updateQuery(opts)),
 });
 
@@ -174,7 +192,8 @@ User.propTypes = {
     pageIndex: PropTypes.number.isRequired,
     fetchList: PropTypes.func.isRequired,
     fetchUserDel: PropTypes.func.isRequired,
+    fetchSearch: PropTypes.func.isRequired,
     onchange: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(User));
