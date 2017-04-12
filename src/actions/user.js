@@ -1,5 +1,4 @@
-import * as api from 'Constants/api';
-import * as actionType from 'Constants/actionType';
+import { api, actionType } from 'Constants';
 import { get, post } from 'Assets/js/request';
 import { actionCreator } from 'Assets/js/util';
 
@@ -8,6 +7,7 @@ const rejectRequest = actionCreator(actionType.USER_LIST_FAIL);
 const finishUserList = actionCreator(actionType.USER_LIST_SUCCESS);
 
 const pageSize = 10;
+
 
 // 获取用户列表
 export function fetchList(opts = {}) {
@@ -43,19 +43,5 @@ export function fetchUserDel(opts = {}) {
         }
 
         dispatch(fetchList({ pageIndex }));
-    };
-}
-
-// 用户搜索
-export function fetchSearch(opts = {}) {
-    return async (dispatch, getState) => {
-        const params = Object.assign({}, opts);
-
-        try {
-            await post(api.API_USER_SEARCH, params);
-        } catch (e) {
-            throw e;
-        }
-
     };
 }

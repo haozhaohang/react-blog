@@ -1,5 +1,4 @@
-import * as api from 'Constants/api';
-import * as actionType from 'Constants/actionType';
+import { api, actionType } from 'Constants';
 import { post, get } from 'Assets/js/request';
 import { actionCreator } from 'Assets/js/util';
 import { message } from 'antd';

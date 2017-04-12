@@ -66,19 +66,21 @@ class User extends Component {
     }
 
     componentDidMount() {
-        const { pageIndex, fetchList } = this.props;
+        const { pageIndex, username, fetchList } = this.props;
         const params = {
             pageIndex,
+            username,
         };
 
         fetchList(params);
     }
 
     componentDidUpdate(preProps) {
-        const { pageIndex, fetchList } = this.props;
-        const fields = ['pageIndex'];
+        const { pageIndex, username, fetchList } = this.props;
+        const fields = ['pageIndex', 'username'];
         const params = {
             pageIndex,
+            username,
         };
 
         if (equalByProps(preProps, this.props, fields)) {
@@ -107,7 +109,7 @@ class User extends Component {
 
     // 搜索
     handleSubmit(e) {
-        console.log(111);
+
         e.preventDefault();
         const { fetchSearch, form: { validateFields } } = this.props;
 
@@ -121,13 +123,15 @@ class User extends Component {
     }
 
     render() {
-        const { list, loading, total, pageIndex, form: { getFieldDecorator } } = this.props;
+        const { list, loading, total, pageIndex, username, form: { getFieldDecorator } } = this.props;
         const pagination = {
             total,
             current: pageIndex,
         };
 
-        const usernameDecorator = getFieldDecorator('username');
+        const usernameDecorator = getFieldDecorator('username', {
+            initialValue: username,
+        });
 
         return (
             <div className="user-wrapper">
@@ -168,12 +172,13 @@ class User extends Component {
 
 const mapStateToProps = ({ userList }, { location }) => {
     const { list, total, loading } = userList;
-    const { pageIndex = 1 } = location.query;
+    const { pageIndex = 1, username } = location.query;
 
     return {
         list,
         total,
         loading,
+        username,
         pageIndex: Number(pageIndex),
     };
 };
@@ -181,7 +186,7 @@ const mapStateToProps = ({ userList }, { location }) => {
 const mapDispatchToProps = dispatch => ({
     fetchList: opts => dispatch(fetchList(opts)),
     fetchUserDel: opts => dispatch(fetchUserDel(opts)),
-    fetchSearch: opts => dispatch(fetchSearch(opts)),
+    fetchSearch: opts => dispatch(updateQuery(opts)),
     onchange: opts => dispatch(updateQuery(opts)),
 });
 
@@ -190,6 +195,7 @@ User.propTypes = {
     total: PropTypes.number.isRequired,
     loading: PropTypes.bool.isRequired,
     pageIndex: PropTypes.number.isRequired,
+    username: PropTypes.string,
     fetchList: PropTypes.func.isRequired,
     fetchUserDel: PropTypes.func.isRequired,
     fetchSearch: PropTypes.func.isRequired,
