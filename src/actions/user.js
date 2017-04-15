@@ -1,6 +1,7 @@
 import { api, actionType } from 'Constants';
 import { get, post } from 'Assets/js/request';
 import { actionCreator } from 'Assets/js/util';
+import { message } from 'antd';
 
 const addRequest = actionCreator(actionType.USER_LIST_REQUEST);
 const rejectRequest = actionCreator(actionType.USER_LIST_FAIL);
@@ -42,6 +43,6 @@ export function fetchUserDel(opts = {}) {
             throw e;
         }
 
-        dispatch(fetchList({ pageIndex }));
+        message.success('删除成功');
     };
 }

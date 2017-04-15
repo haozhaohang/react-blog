@@ -52,6 +52,6 @@ export function fetchUserUpdate(opts ={}) {
         }
 
         dispatch(push('/manage'));
-        message.success(payload.message);
+        message.success('保存成功');
     }
 }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Button, Table, Form, Input } from 'antd';
 import { fetchList, fetchUserDel, fetchSearch  } from 'Actions/user';
-import { updateQuery } from 'Actions/router';
+import { updateQuery, replaceQuery } from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
 
 // css
@@ -98,13 +98,25 @@ class User extends Component {
         onchange(params);
     }
 
-    handleDel(val) {
-        const { fetchUserDel } = this.props;
-        const params = {
+    async handleDel(val) {
+        const { pageIndex, username, fetchList, fetchUserDel } = this.props;
+        const params1 = {
             id: val,
         };
 
-        fetchUserDel(params);
+        try {
+            await fetchUserDel(params1);
+        } catch (e) {
+            return;
+        }
+
+        const params2 = {
+            pageIndex,
+            username,
+        };
+
+        fetchList(params2);
+
     }
 
     // 搜索
@@ -186,7 +198,7 @@ const mapStateToProps = ({ userList }, { location }) => {
 const mapDispatchToProps = dispatch => ({
     fetchList: opts => dispatch(fetchList(opts)),
     fetchUserDel: opts => dispatch(fetchUserDel(opts)),
-    fetchSearch: opts => dispatch(updateQuery(opts)),
+    fetchSearch: opts => dispatch(replaceQuery(opts)),
     onchange: opts => dispatch(updateQuery(opts)),
 });
 
