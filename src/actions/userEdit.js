@@ -2,7 +2,6 @@ import { api, actionType } from 'Constants';
 import { post, get } from 'Assets/js/request';
 import { actionCreator } from 'Assets/js/util';
 import { message } from 'antd';
-import { push } from 'react-router-redux';
 
 const finishEdit = actionCreator(actionType.USER_EDIT_INFO);
 
@@ -18,7 +17,6 @@ export function fetchSubmit(opts = {}) {
             return;
         }
 
-        dispatch(push('/manage'));
         message.success(payload.message);
 
     }
@@ -28,12 +26,18 @@ export function fetchSubmit(opts = {}) {
 export function fetchUserEdit(opts ={}) {
     return async (dispatch) => {
         const params = Object.assign({}, opts);
-        let payload;
+        let payload = {
+            data: {
+                info: {}
+            }
+        };
 
-        try {
-            payload = await get(api.API_USER_EDIT, params)
-        } catch (e) {
-            throw e;
+        if (params.id) {
+            try {
+                payload = await get(api.API_USER_EDIT, params)
+            } catch (e) {
+                throw e;
+            }
         }
 
         dispatch(finishEdit(payload));
@@ -51,7 +55,6 @@ export function fetchUserUpdate(opts ={}) {
             throw e;
         }
 
-        dispatch(push('/manage'));
         message.success('保存成功');
     }
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Form, Input, Button, Breadcrumb, Radio } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from 'Actions/userEdit';
+import { push } from 'react-router-redux';
 
 // css
 import './index.styl';
@@ -35,17 +36,15 @@ class UserEdit extends Component {
             id
         };
 
-        // 编辑
-        if (!status) {
-            fetchUserEdit(params);
-        }
+        fetchUserEdit(params);
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         // 阻止表单的默认事件
         e.preventDefault();
 
-        const { status, id, fetchSubmit, fetchUserUpdate, form: { validateFields } } = this.props;
+        const { status, id, fetchSubmit, fetchUserUpdate, push, form: { validateFields } } = this.props;
+        let params;
 
         validateFields((errors, values) => {
 
@@ -53,22 +52,19 @@ class UserEdit extends Component {
                 return;
             }
 
-            const params = {
+            params = {
                 ...values,
                 id,
             }
-
-            // 更新
-            if (!status) {
-                fetchUserUpdate(params);
-
-                return;
-            }
-
-            // 新添加
-            fetchSubmit(values);
         });
 
+        try {
+            await status ? fetchSubmit(params) : fetchUserUpdate(params);
+        } catch (e) {
+            return;
+        }
+
+        push('/manage');
 
     }
 
@@ -139,7 +135,7 @@ class UserEdit extends Component {
 
                     <FormItem {...tailFormItemLayout}>
                         <Button type="primary" htmlType="submit" size="large">保存</Button>
-                        <Button size="large">返回</Button>
+                        <Link to="/manage"><Button size="large">返回</Button></Link>
                     </FormItem>
                 </Form>
             </div>
@@ -158,7 +154,7 @@ const mapStateToProps = ({ userEdit }, { location: { query } }) => {
     };
 };
 
-const mapDispatchToProps = { ...actions };
+const mapDispatchToProps = { ...actions, push };
 
 UserEdit.propTypes = {
     id: PropTypes.string,

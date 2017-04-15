@@ -2,9 +2,7 @@ import * as api from 'Constants/api';
 import * as actionType from 'Constants/actionType';
 
 const initState = {
-    info: {
-        isAdmin: 0,
-    },
+    info: {},
 }
 
 export default function userEdit(state = initState, { type, payload }) {
