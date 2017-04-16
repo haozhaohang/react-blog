@@ -16,8 +16,10 @@ import Record from 'Containers/Record';
 import Code from 'Containers/Code';
 
 import Manage from 'Containers/Manage';
-import User from 'Containers/User';
-import UserEdit from 'Containers/User/Edit';
+import User from 'Containers/Manage/User';
+import UserEdit from 'Containers/Manage/User/Edit';
+import Content from 'Containers/Manage/Content';
+import ContentEdit from 'Containers/Manage/Content/Edit';
 
 import rootReducer from 'Reducers';
 
@@ -53,6 +55,8 @@ const App = () =>
                 <Route path="manage" component={Manage}>
                     <IndexRoute component={User} />
                     <Route path="user/edit" component={UserEdit} />
+                    <Route path="content" component={Content} />
+                    <Route path="content/edit" component={ContentEdit} />
                 </Route>
             </Router>
         </Provider>

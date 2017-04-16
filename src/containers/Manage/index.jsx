@@ -45,13 +45,13 @@ class Manage extends Component {
                             </Link>
                         </MenuItem>
                         <MenuItem key="2">
-                            <Link to="/">
+                            <Link to="/manage/content">
                                 <Icon type="video-camera" />
                                 <span className="nav-text">分类管理</span>
                             </Link>
                         </MenuItem>
                         <MenuItem key="3">
-                            <Link to="/manage">
+                            <Link to="/manage/content">
                                 <Icon type="upload" />
                                 <span className="nav-text">内容管理</span>
                             </Link>

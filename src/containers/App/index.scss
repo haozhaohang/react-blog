@@ -52,3 +52,8 @@ img {
         flex: 1;
     }
 }
+
+:global(.main-containers) {
+    padding-top: 25px;
+    display: flex;
+}
