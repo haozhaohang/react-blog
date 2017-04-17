@@ -126,6 +126,29 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff|woff2)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 20000,
+            },
+          },
+        ],
+      },
+      {
+          test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+          use: 'url-loader'
+      },
+      {
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+          use: 'file-loader'
+      },
+      {
+          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+          use: 'url-loader'
+      },
     //   {
     //     test: /\.jsx?$/,
     //     include: SRC_PATH,

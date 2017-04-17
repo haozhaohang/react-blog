@@ -1,21 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Form, Button, Breadcrumb } from 'antd';
+import { Form, Input, Button, Breadcrumb } from 'antd';
 import { connect } from 'react-redux';
-import * as actions from 'Actions/userEdit';
+import * as actions from 'Actions/contentEdit';
 import { push } from 'react-router-redux';
 import Editor from 'Components/Editor';
 
 // css
 import './index.styl';
 
+const { Item: FormItem } = Form;
 const { Item: BreadcrumbItem } = Breadcrumb;
+
+const editorStyle = {
+    width: "100%",
+    height: "500px",
+};
 
 class ContentEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            content: {__html: ''}
+            content: ''
         };
 
         this.handleGetContent = this.handleGetContent.bind(this);
@@ -33,18 +39,38 @@ class ContentEdit extends Component {
     handleGetContent() {
         const content = this.refs.edit.getContent();
         this.setState({
-            content: {__html: content}
+            content
         });
+    }
+
+    handleSubmint() {
+        const { content } = this.props;
+        const { fetchSubmit, form: validateFields } = this.props;
+
+        validateFields((error, values) => {
+            if (error) {
+                return;
+            }
+
+            const params = {
+                ...values,
+                content
+            };
+
+            fetchSubmit(params);
+        })
     }
 
 
     render() {
         const { content } = this.state;
+        const { form: { getFieldDecorator } } = this.props;
 
-        const editorStyle = {
-            width: "100%",
-            height: "500px",
-        };
+        const titleDecorator = getFieldDecorator('title', {
+            rules: [
+                { required: true, type: 'string', message: '标题为必填参数' }
+            ]
+        })
 
         return (
             <div className="content-edit-wrapper">
@@ -52,16 +78,23 @@ class ContentEdit extends Component {
                     <BreadcrumbItem><Link to="/manage">内容管理</Link></BreadcrumbItem>
                     <BreadcrumbItem>编辑</BreadcrumbItem>
                 </Breadcrumb>
-                <div className="main-containers">
-                    <Editor
-                        id="edit"
-                        style={editorStyle}
-                        getContent={this.handleGetContent}
-                        ref="edit"
-                    />
+                <div>
+                    <Form layout="horizontal">
+                        <FormItem label="文章标题">
+                            {titleDecorator(
+                                <Input />
+                            )}
+                        </FormItem>
+                    </Form>
                 </div>
+                <Editor
+                    id="edit"
+                    style={editorStyle}
+                    getContent={this.handleGetContent}
+                    ref="edit"
+                />
                 <Button onClick={this.handleGetContent}>保存</Button>
-                <div dangerouslySetInnerHTML={content} />
+                <div dangerouslySetInnerHTML={{__html: content}} />
             </div>
         );
     }
