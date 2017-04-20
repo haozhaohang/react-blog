@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Form, Input, Button, Breadcrumb } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from 'Actions/contentEdit';
-import { push } from 'react-router-redux';
+import { goBack } from 'react-router-redux';
 import Editor from 'Components/Editor';
 
 // css
@@ -24,49 +24,51 @@ class ContentEdit extends Component {
             content: ''
         };
 
-        this.handleGetContent = this.handleGetContent.bind(this);
+        this.handleSubmint = this.handleSubmint.bind(this);
     }
 
     componentDidMount() {
-        const { status, id, fetchUserEdit } = this.props;
+        const { id, fetchContentEdit } = this.props;
         const params = {
-            id
+            id,
         };
 
-        fetchUserEdit(params);
+        fetchContentEdit(params);
     }
 
-    handleGetContent() {
+    async handleSubmint() {
+        const { id, fetchSubmit, fetchContentUpdate, goBack, form: { validateFields } } = this.props;
         const content = this.refs.edit.getContent();
-        this.setState({
-            content
-        });
-    }
-
-    handleSubmint() {
-        const { content } = this.props;
-        const { fetchSubmit, form: validateFields } = this.props;
+        let params;
 
         validateFields((error, values) => {
             if (error) {
                 return;
             }
 
-            const params = {
+            params = {
                 ...values,
+                id,
                 content
             };
-
-            fetchSubmit(params);
         })
+
+        try {
+            await id ?  fetchContentUpdate(params) : fetchSubmit(params);
+        } catch (e) {
+            return;
+        }
+
+        goBack();
     }
 
 
     render() {
         const { content } = this.state;
-        const { form: { getFieldDecorator } } = this.props;
+        const { info, form: { getFieldDecorator } } = this.props;
 
         const titleDecorator = getFieldDecorator('title', {
+            initialValue: info.title,
             rules: [
                 { required: true, type: 'string', message: '标题为必填参数' }
             ]
@@ -75,7 +77,7 @@ class ContentEdit extends Component {
         return (
             <div className="content-edit-wrapper">
                 <Breadcrumb>
-                    <BreadcrumbItem><Link to="/manage">内容管理</Link></BreadcrumbItem>
+                    <BreadcrumbItem><Link to="/manage/content">内容管理</Link></BreadcrumbItem>
                     <BreadcrumbItem>编辑</BreadcrumbItem>
                 </Breadcrumb>
                 <div>
@@ -87,31 +89,33 @@ class ContentEdit extends Component {
                         </FormItem>
                     </Form>
                 </div>
-                <Editor
-                    id="edit"
-                    style={editorStyle}
-                    getContent={this.handleGetContent}
-                    ref="edit"
-                />
-                <Button onClick={this.handleGetContent}>保存</Button>
+                {
+                    info.content ? <Editor
+                        id="edit"
+                        style={editorStyle}
+                        ref="edit"
+                        content={info.content}
+                    /> :
+                    null
+                }
+                <Button onClick={this.handleSubmint}>保存</Button>
                 <div dangerouslySetInnerHTML={{__html: content}} />
             </div>
         );
     }
 }
 
-const mapStateToProps = ({ userEdit }, { location: { query } }) => {
-    const { info } = userEdit;
+const mapStateToProps = ({ contentEdit }, { location: { query } }) => {
+    const { info } = contentEdit;
     const { id } = query;
 
     return {
         id,
-        status: !id,
         info,
     };
 };
 
-const mapDispatchToProps = { ...actions, push };
+const mapDispatchToProps = { ...actions, goBack };
 
 ContentEdit.propTypes = {
     id: PropTypes.string,

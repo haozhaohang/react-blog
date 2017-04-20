@@ -31,7 +31,7 @@ class UserEdit extends Component {
     }
 
     componentDidMount() {
-        const { status, id, fetchUserEdit } = this.props;
+        const { id, fetchUserEdit } = this.props;
         const params = {
             id
         };
@@ -43,7 +43,7 @@ class UserEdit extends Component {
         // 阻止表单的默认事件
         e.preventDefault();
 
-        const { status, id, fetchSubmit, fetchUserUpdate, push, form: { validateFields } } = this.props;
+        const { id, fetchSubmit, fetchUserUpdate, push, form: { validateFields } } = this.props;
         let params;
 
         validateFields((errors, values) => {
@@ -59,7 +59,7 @@ class UserEdit extends Component {
         });
 
         try {
-            await status ? fetchSubmit(params) : fetchUserUpdate(params);
+            await id ? fetchUserUpdate(params) : fetchSubmit(params) ;
         } catch (e) {
             return;
         }

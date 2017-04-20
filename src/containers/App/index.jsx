@@ -54,9 +54,9 @@ const App = () =>
                 </Route>
                 <Route path="manage" component={Manage}>
                     <IndexRoute component={User} />
-                    <Route path="user/edit" component={UserEdit} />
-                    <Route path="content" component={Content} />
-                    <Route path="content/edit" component={ContentEdit} />
+                    <Route path="/manage/user/edit" component={UserEdit} />
+                    <Route path="/manage/content" component={Content} />
+                    <Route path="/manage/content/edit" component={ContentEdit} />
                 </Route>
             </Router>
         </Provider>

@@ -42,7 +42,7 @@ class User extends Component {
                 render: ({ _id }) =>
                 (
                     <div>
-                        <Link to={`manage/user/edit?id=${_id}`}>
+                        <Link to={`/manage/user/edit?id=${_id}`}>
                             <Button
                                 type="primary"
                             >

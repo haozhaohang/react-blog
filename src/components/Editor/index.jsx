@@ -23,7 +23,6 @@ class Editor extends Component {
     // 获取内容
     getContent() {
         var content = this.editor.$txt.html();
-        console.log(content);
 
         return content;
     }

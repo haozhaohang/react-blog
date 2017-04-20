@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Button, Table, Form, Input } from 'antd';
-import { fetchList, fetchUserDel, fetchSearch  } from 'Actions/user';
-import { updateQuery, replaceQuery } from 'Actions/router';
+import * as actions from 'Actions/content';
+import * as router from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
 
 // css
@@ -22,22 +22,30 @@ class Content extends Component {
             },
             {
                 title: '文章题目',
-                dataIndex: 'username',
+                dataIndex: 'title',
             },
             {
                 title: '创建时间',
-                dataIndex: 'password',
+                dataIndex: 'createTime',
             },
             {
-                title: '文章分类',
-                dataIndex: 'isAdmin',
+                title: '浏览量',
+                dataIndex: 'views',
+            },
+            {
+                title: '作者',
+                dataIndex: 'author1',
+            },
+            {
+                title: '内容',
+                dataIndex: 'content',
             },
             {
                 title: '操作',
                 render: ({ _id }) =>
                 (
                     <div>
-                        <Link to={`manage/user/edit?id=${_id}`}>
+                        <Link to={`/manage/content/edit?id=${_id}`}>
                             <Button
                                 type="primary"
                             >
@@ -61,21 +69,21 @@ class Content extends Component {
     }
 
     componentDidMount() {
-        const { pageIndex, username, fetchList } = this.props;
+        const { pageIndex, title, fetchList } = this.props;
         const params = {
             pageIndex,
-            username,
+            title,
         };
 
         fetchList(params);
     }
 
     componentDidUpdate(preProps) {
-        const { pageIndex, username, fetchList } = this.props;
-        const fields = ['pageIndex', 'username'];
+        const { pageIndex, title, fetchList } = this.props;
+        const fields = ['pageIndex', 'title'];
         const params = {
             pageIndex,
-            username,
+            title,
         };
 
         if (equalByProps(preProps, this.props, fields)) {
@@ -84,30 +92,30 @@ class Content extends Component {
     }
 
     handleChange(val) {
-        const { onchange } = this.props;
+        const { updateQuery } = this.props;
         const { current: pageIndex } = val;
         const params = {
             pageIndex,
         };
 
-        onchange(params);
+        updateQuery(params);
     }
 
     async handleDel(val) {
-        const { pageIndex, username, fetchList, fetchUserDel } = this.props;
+        const { pageIndex, title, fetchList, fetchContentDel } = this.props;
         const params1 = {
             id: val,
         };
 
         try {
-            await fetchUserDel(params1);
+            await fetchContentDel(params1);
         } catch (e) {
             return;
         }
 
         const params2 = {
             pageIndex,
-            username,
+            title,
         };
 
         fetchList(params2);
@@ -118,26 +126,26 @@ class Content extends Component {
     handleSubmit(e) {
 
         e.preventDefault();
-        const { fetchSearch, form: { validateFields } } = this.props;
+        const { replaceQuery, form: { validateFields } } = this.props;
 
         validateFields((error, values) => {
             if (error) {
                 return;
             }
 
-            fetchSearch(values);
+            replaceQuery(values);
         })
     }
 
     render() {
-        const { list, loading, total, pageIndex, username, form: { getFieldDecorator } } = this.props;
+        const { list, loading, total, pageIndex, title, form: { getFieldDecorator } } = this.props;
         const pagination = {
             total,
             current: pageIndex,
         };
 
-        const usernameDecorator = getFieldDecorator('username', {
-            initialValue: username,
+        const usernameDecorator = getFieldDecorator('title', {
+            initialValue: title,
         });
 
         return (
@@ -177,25 +185,20 @@ class Content extends Component {
     }
 }
 
-const mapStateToProps = ({ userList }, { location }) => {
-    const { list, total, loading } = userList;
-    const { pageIndex = 1, username } = location.query;
+const mapStateToProps = ({ contentList }, { location }) => {
+    const { list, total, loading } = contentList;
+    const { pageIndex = 1, title } = location.query;
 
     return {
         list,
         total,
         loading,
-        username,
+        title,
         pageIndex: Number(pageIndex),
     };
 };
 
-const mapDispatchToProps = dispatch => ({
-    fetchList: opts => dispatch(fetchList(opts)),
-    fetchUserDel: opts => dispatch(fetchUserDel(opts)),
-    fetchSearch: opts => dispatch(replaceQuery(opts)),
-    onchange: opts => dispatch(updateQuery(opts)),
-});
+const mapDispatchToProps = { ...actions, ...router };
 
 Content.propTypes = {
     list: PropTypes.array.isRequired,
@@ -204,9 +207,6 @@ Content.propTypes = {
     pageIndex: PropTypes.number.isRequired,
     username: PropTypes.string,
     fetchList: PropTypes.func.isRequired,
-    fetchUserDel: PropTypes.func.isRequired,
-    fetchSearch: PropTypes.func.isRequired,
-    onchange: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Content));
