@@ -2,7 +2,7 @@ import React from 'react';
 
 // component
 import Breadcrumb from 'Components/Breadcrumb';
-import Article from 'Containers/Article';
+import ArticleIntro from 'Containers/ArticleIntro';
 
 // css
 import style from './index.scss';
@@ -18,22 +18,22 @@ const Main = () =>
             </Breadcrumb>
             <ul className={style.list}>
                 <li>
-                    <Article />
+                    <ArticleIntro />
                 </li>
                 <li>
-                    <Article />
+                    <ArticleIntro />
                 </li>
                 <li>
-                    <Article />
+                    <ArticleIntro />
                 </li>
                 <li>
-                    <Article />
+                    <ArticleIntro />
                 </li>
                 <li>
-                    <Article />
+                    <ArticleIntro />
                 </li>
                 <li>
-                    <Article />
+                    <ArticleIntro />
                 </li>
             </ul>
         </div>
