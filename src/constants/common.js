@@ -1,0 +1,1 @@
+const ARTICLE_PAGE = '';
