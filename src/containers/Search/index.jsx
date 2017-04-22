@@ -1,14 +1,14 @@
 import React from 'react';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const Search = () =>
     (
-        <section className={style.search}>
+        <section className="search-wrapper">
             <from>
-                <input className={style.input} placeholder="请输入搜索关键字" />
-                <button className={style.btn} >搜索</button>
+                <input className="text" placeholder="请输入搜索关键字" />
+                <button className="btn" >搜索</button>
             </from>
         </section>
     );
