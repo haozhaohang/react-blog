@@ -1,18 +1,18 @@
 import React from 'react';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const TagCloud = () =>
     (
-        <section className={style.tag}>
-            <div className={style.title}>
+        <section className="tag-cloud-wrapper">
+            <div className="title">
                 <h3>
                     <a title="查看所有标签">热门标签</a>
                 </h3>
                 <span>Tag Cloud</span>
             </div>
-            <div className={style.list}>
+            <div className="list">
                 <a title="">H5</a>
                 <a title="">插件</a>
                 <a title="">规范</a>
