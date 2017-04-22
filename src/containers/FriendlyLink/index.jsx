@@ -1,19 +1,19 @@
 import React from 'react';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const FriendlyLink = () =>
     (
-        <section className={style.friendlyLink}>
+        <section className="friendly-link-wrapper">
             <div>
-                <div className={style.title}>
+                <div className="title">
                     <h3>
                         <a title="查看所有标签">友情链接</a>
                     </h3>
                     <span>Friendly Link</span>
                 </div>
-                <ul className={style.list}>
+                <ul className="list">
                     <li>
                         <a href="javascript">引领Web前沿</a>
                     </li>
