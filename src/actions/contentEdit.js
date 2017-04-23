@@ -22,12 +22,18 @@ export function fetchSubmit(params = {}) {
 // 获取文章信息
 export function fetchContentEdit(params = {}) {
     return async (dispatch) => {
-        let payload;
+        let payload = {
+            data: {
+                info: {},
+            },
+        };
 
-        try {
-            payload = await get(api.API_CONTENT_EDIT, params);
-        } catch (e) {
-            return;
+        if (params.id) {
+            try {
+                payload = await get(api.API_CONTENT_EDIT, params);
+            } catch (e) {
+                return;
+            }
         }
 
         dispatch(finishEdit(payload));

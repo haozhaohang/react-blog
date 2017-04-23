@@ -1,15 +1,20 @@
 import React from 'react';
-import style from './index.scss';
+import { Link } from 'react-router';
+
+// css
+import './index.styl';
+
+// img
 import titleImg from './img/title.jpg';
 
-const ArticleIntro = () =>
+const ArticleIntro = ({value}) =>
     (
-        <article className={style.wrapper}>
-            <div className={style.container}>
+        <article className="article-intro-wrapper">
+            <div className="container">
 
-                <h2 className={style.title}>
+                <h2 className="title">
                     <a href="">
-                        文章标题
+                        {value.title}
                     </a>
                 </h2>
 
@@ -17,33 +22,21 @@ const ArticleIntro = () =>
                     <img width="570" height="200" src={titleImg} alt="文章图片" />
                 </a>
 
-                <section className={style.main}>
-                    <h2>一级标题</h2>
-                    <ul>
-                        <li>
-                            CSS动画属性会触发整个页面的重排relayout、重绘repaint、重组recomposite
-                        </li>
-                        <li>
-                            Paint通常是其中最花费性能的，尽可能避免使用触发paint的CSS动画属性，这也是为什么我们推荐在CSS动画中使用&nbsp;
-                            <code>webkit-transform: translateX(3em)&nbsp;</code>的方案代替使用&nbsp;
-                            <code>left: 3em&nbsp;</code>，因为
-                            <code>left</code>会额外触发layout与paint，而
-                            <code>webkit-transform</code>只触发整个页面composite
-                        </li>
-                    </ul>
-                    <p>
-                        <a>
+                <section className="main">
+                    <p className="mian-content" dangerouslySetInnerHTML={{__html: value.content}}></p>
+                    <p className="lick-full">
+                        <Link to={`/article?id=${value._id}`}>
                             查看全文
-                        </a>
+                        </Link>
                     </p>
                 </section>
 
-                <div className={style.msg}>
+                <div className="msg">
                     <span>2016/11</span>
                     <span>15&nbsp;&nbsp;周二</span>
                 </div>
 
-                <footer className={style.tag}>
+                <footer className="tag">
                     <span>
                         标签:
                         <a>

@@ -9,7 +9,7 @@ import './index.styl';
 
 const BreadcrumbItem = Breadcrumb.Item;
 
-const Main = () =>
+const Main = ({value}) =>
     (
         <div className="main-wrapper">
             <Breadcrumb>
@@ -20,17 +20,17 @@ const Main = () =>
                 <div className="containers">
                     <header>
                         <h1>
-                            HTML页面后退不缓存
+                            {value.title}
                         </h1>
                     </header>
-                    <div className="">
-                        <time class="mod-article__meta" pubdate="" datetime=""><i class="icon-time"></i>星期四 2017/04/20 18:18</time>
-                        <span class="mod-article__meta"><i class="icon-view"></i>阅读：33</span>
-                        <span class="mod-article__meta"><i class="icon-comment"></i>评论：0</span>
-                        <span class="mod-article__meta"><i class="icon-author"></i>作者：ivan</span>
-                        <span class="mod-article__meta"><i class="icon-category"></i>分类：<a href="http://www.xuanfengge.com/category/web" rel="category tag">Web前端</a></span>
+                    <div className="meta-list">
+                        <time className="meta-item"><i></i>{value.createTime}</time>
+                        <span className="meta-item"><i></i>阅读：{value.views}</span>
+                        <span className="meta-item"><i></i>评论：0</span>
+                        <span className="meta-item"><i></i>作者：{value.author}</span>
+                        <span className="meta-item"><i></i>分类：<a rel="category tag">Web前端</a></span>
                     </div>
-                    <section></section>
+                    <section className="main-content" dangerouslySetInnerHTML={{__html: value.content}}></section>
                     <footer>
 
                     </footer>

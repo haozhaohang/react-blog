@@ -65,7 +65,7 @@ class ContentEdit extends Component {
 
     render() {
         const { content } = this.state;
-        const { info, form: { getFieldDecorator } } = this.props;
+        const { id, info, form: { getFieldDecorator } } = this.props;
 
         const titleDecorator = getFieldDecorator('title', {
             initialValue: info.title,
@@ -90,7 +90,7 @@ class ContentEdit extends Component {
                     </Form>
                 </div>
                 {
-                    info.content ? <Editor
+                    info.content || !id ? <Editor
                         id="edit"
                         style={editorStyle}
                         ref="edit"

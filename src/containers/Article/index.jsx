@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from 'Actions/article';
 
 // Component
 import Main from './Main';
@@ -8,16 +10,41 @@ import Aside from './Aside';
 // css
 import './index.styl';
 
-const Article = () =>
-    (
-        <section className="article-wrapper">
-            <div className="main">
-                <Main />
-            </div>
-            <div className="aside">
-                <Aside />
-            </div>
-        </section>
-    );
+class Article extends Component {
+    componentDidMount() {
+        const { id, fetchDetail } = this.props;
+        const params = { id };
 
-export default Article;
+        fetchDetail(params);
+    }
+
+    render(){
+        const { info } = this.props;
+        return (
+            <section className="article-wrapper">
+                <div className="main">
+                    <Main
+                        value={info}
+                    />
+                </div>
+                <div className="aside">
+                    <Aside />
+                </div>
+            </section>
+        );
+    }
+}
+
+const mapStateToProps = ({ article }, { location: { query } }) => {
+    const { id } = query;
+    const { info } = article;
+
+    return {
+        id,
+        info,
+    };
+};
+
+const mapDispathToProps = { ...actions };
+
+export default connect(mapStateToProps, mapDispathToProps)(Article);

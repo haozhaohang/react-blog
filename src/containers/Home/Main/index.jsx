@@ -2,28 +2,19 @@ import React from 'react';
 
 // component
 import ArticleItem from 'Containers/ArticleItem';
+import ArticleIntro from 'Containers/ArticleIntro';
+
 
 // css
 import style from './index.scss';
 
-const Main = () =>
+const Main = ({ list }) =>
     (
         <div className={style.main}>
             <h2 className={style.title}>最新文章</h2>
-            <ul>
-                <li>
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                    <ArticleItem />
-                </li>
-            </ul>
+            <div>
+                {list.map((val, index) => <ArticleIntro key={index} value={val} />)}
+            </div>
         </div>
     );
 

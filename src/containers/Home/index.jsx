@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { get } from 'Assets/js/request';
+import * as actions from 'Actions/home';
+import { connect } from 'react-redux';
 
 // Component
 import Banner from 'Containers/Banner';
@@ -11,28 +12,21 @@ import './index.styl';
 
 class Home extends Component {
     componentDidMount() {
-        async function fetchQuery() {
-            // let payload;
+        const { fetchNewList } = this.props;
 
-            // try {
-                // payload = await post('/api/user/login',
-                    // { "username": "hao1", "password": "123" });
-            //     payload = await get('/api');
-            // } catch (e) {
-            //     return;
-            // }
-            // console.log(payload);
-        }
-
-        fetchQuery();
+        fetchNewList();
     }
 
     render() {
+        const { list, total } = this.props;
+
         return (
             <div className="home-wrapper">
                 <Banner />
                 <div className="home-container clearfix">
-                    <Main />
+                    <Main
+                        list={list}
+                    />
                     <Aside />
                 </div>
             </div>
@@ -40,4 +34,15 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = ({ home }, { location: { query } }) => {
+
+    const { newList, total } = home;
+    return {
+        total,
+        list: newList,
+    };
+};
+
+const mapDispatchToProps = { ...actions };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

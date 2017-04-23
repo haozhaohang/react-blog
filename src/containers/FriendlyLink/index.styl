@@ -1,69 +1,69 @@
 .friendly-link-wrapper {
     padding: 5px;
     background: #fff;
-}
 
-.title {
-    height: 30px;
-    margin: 0 auto;
-    border-bottom: 2px solid #ccc;
-    h3 {
-        display: inline-block;
-        font-size: 16px;
-        color: #000;
-        line-height: 28px;
-        text-indent: 2px;
-        border-bottom: 2px solid #39c;
-        font-weight: 400;
-        a {
+    .title {
+        height: 30px;
+        margin: 0 auto;
+        border-bottom: 2px solid #ccc;
+        h3 {
+            display: inline-block;
+            font-size: 16px;
             color: #000;
-            &:hover {
-                color: #39c;
+            line-height: 28px;
+            text-indent: 2px;
+            border-bottom: 2px solid #39c;
+            font-weight: 400;
+            a {
+                color: #000;
+                &:hover {
+                    color: #39c;
+                }
             }
         }
+        span {
+            display: inline-block;
+            font-size: 10px;
+            text-indent: 6px;
+            color: #adadad;
+        }
     }
-    span {
-        display: inline-block;
-        font-size: 10px;
-        text-indent: 6px;
-        color: #adadad;
-    }
-}
 
-.list {
-    margin-top: 6px;
-    margin-bottom: 4px;
-    transition: left .3s cubic-bezier(.45,.05,.55,.95);
-    li {
-        display: flex;
-        width: 290px;
-        height: 24px;
-        line-height: 24px;
-        border-top: 1px solid #fff;
-        border-bottom: 1px solid #ececec;
-        background: #f7f7f7;
-        transition: all .2s ease-in-out;
-        &:hover {
-            background: #fff;
-        }
-        &:before {
-            content: "";
-            margin: 8px 5px 0;
-            width: 4px;
-            height: 4px;
-            border: 2px solid #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            display: block;
-        }
-        a {
-            flex: 1;
-            color: #666;
-            overflow: hidden;
-            white-space:nowrap;
-            text-overflow: ellipsis;
+    .list {
+        margin-top: 6px;
+        margin-bottom: 4px;
+        transition: left .3s cubic-bezier(.45,.05,.55,.95);
+        li {
+            display: flex;
+            width: 290px;
+            height: 24px;
+            line-height: 24px;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #ececec;
+            background: #f7f7f7;
+            transition: all .2s ease-in-out;
             &:hover {
-                color: #39c;
+                background: #fff;
+            }
+            &:before {
+                content: "";
+                margin: 8px 5px 0;
+                width: 4px;
+                height: 4px;
+                border: 2px solid #ccc;
+                border-radius: 50%;
+                cursor: pointer;
+                display: block;
+            }
+            a {
+                flex: 1;
+                color: #666;
+                overflow: hidden;
+                white-space:nowrap;
+                text-overflow: ellipsis;
+                &:hover {
+                    color: #39c;
+                }
             }
         }
     }

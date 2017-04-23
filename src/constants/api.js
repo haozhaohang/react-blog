@@ -11,3 +11,7 @@ export const API_CONTENT_DEL = `${prefix}/content/del`;
 export const API_CONTENT_ADD = `${prefix}/content/add`;
 export const API_CONTENT_EDIT = `${prefix}/content/edit`;
 export const API_CONTENT_UPDATE = `${prefix}/content/update`;
+
+export const API_HOME_LIST = `${prefix}/home/newList`;
+
+export const API_ARTICLE_DETAIL = `${prefix}/article/detail`;

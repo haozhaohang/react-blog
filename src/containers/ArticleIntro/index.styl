@@ -1,8 +1,15 @@
-.wrapper {
-    border: 2px solid #fff;
-    background: #fff;
+.article-intro-wrapper {
+    height: 455px;
+    margin: 20px 0 20px 50px;
+    border: 1px solid #e8e8e8;
+    border-bottom: 2px solid #fff;
     box-shadow: 0 0 2px rgba(0, 0, 0, .1);
+    background: #fff;
     transition: all .3s ease-in-out;
+    &:hover {
+        border-bottom: 2px solid #3c9dff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    }
 
     .container {
         position: relative;
@@ -19,7 +26,6 @@
 
             a {
                 color: #333;
-
                 &:hover {
                     color: #39c;
                 }
@@ -35,7 +41,10 @@
         }
 
         .main {
-            margin: 20px;
+            height: 135px;
+            margin: 10px 0;
+            color: #b0b0b0;
+            overflow: hidden;
 
             h2 {
                 border-left: 4px solid #b9d329;
@@ -47,41 +56,23 @@
                 background: #fbfbfb;
             }
 
-            ul {
-                height: auto;
-                text-indent: 2em;
+            .mian-content {
+                height: 105px;
                 overflow: hidden;
-                margin-bottom: 15px;
-
-                li {
-                    list-style: square inside none;
-                    line-height: 23px;
-
-                    code {
-                        padding: .2em 4px;
-                        font-size: 85%;
-                        background-color: rgba(0,0,0,.04);
-                        border-radius: 3px;
-                        font-family: Microsoft Yahei,Tahoma,Arial,SimSun,Hiragino Sans GB,PMingLiu,Verdana,sans-serif;
-                    }
-                }
             }
 
-            p {
-                margin:5px 0;
+            .lick-full {
+                margin:10px 0;
                 word-wrap: break-word;
                 text-indent: 2em;
                 line-height: 20px;
-                line-height: 20px;
                 font-size: 14px;
-                font-family: Microsoft Yahei,Tahoma,Arial,SimSun,Hiragino Sans GB,PMingLiu,Verdana,sans-serif;
 
                 a {
                     word-break: break-all;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     color: #39c;
-
                     &:after {
                         content: "";
                         margin-left: 2px;
@@ -101,7 +92,6 @@
             width: 70px;
             height: 45px;
             background: hsla(0,0%,80%,.4);
-
             &:after {
                 content: "";
                 position: absolute;
@@ -138,7 +128,9 @@
                 a {
                     color: #999;
                     margin: 0 4px 0 0;
-
+                    &:hover {
+                        color: #39c;
+                    }
                     &:before {
                         content: " #";
                     }
@@ -152,7 +144,9 @@
                 a {
                     color: #666;
                     margin: 0 4px 0 0;
-
+                    &:hover {
+                        color: #39c;
+                    }
                     &:before {
                         content: ".";
                     }
@@ -167,13 +161,14 @@
                 a {
                     color: #666;
                     margin: 0 4px 0 0;
-
+                    &:hover {
+                        color: #39c;
+                    }
                     &:before {
                         content: ".";
                     }
                 }
             }
-
         }
     }
 }
