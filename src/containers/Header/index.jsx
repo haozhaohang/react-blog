@@ -6,7 +6,7 @@ import './index.styl';
 const Header = () =>
     (
         <section className="header-wrapper">
-            <header className="header-containers">
+            <header className="header-containers clearfix">
                 <div className="header-logo">
                     <h1>
                         logo
