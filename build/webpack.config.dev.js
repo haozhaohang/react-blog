@@ -1,46 +1,26 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
 var chalk = require('chalk');
+var {
+    ROOT_PATH,
+    SRC_PATH,
+    DIST_PATH,
+    NODE_MODULES_PATH,
+    COMPONENT_PATH,
+    CONTAINERS_PATH,
+    ACTIONS_PATH,
+    REDUCERS_PATH,
+    CONSTANTS_PATH,
+    ASSETS_PATH,
+    IndexPath
+} = require('./path');
 
-// 根路径
-var ROOT_PATH = path.resolve(__dirname, '../');
-
-// 源码路径
-var SRC_PATH = path.resolve(ROOT_PATH, 'src');
-
-// 产出路径
-var DIST_PATH = path.resolve(ROOT_PATH, 'dist');
-
-// 模块路径
-var NODE_MODULES_PATH = path.resolve(ROOT_PATH, 'node_modules');
-
-// 通用组件路径
-var COMPONENT_PATH = path.resolve(SRC_PATH, 'components');
-
-// 业务组件路径
-var CONTAINERS_PATH = path.resolve(SRC_PATH, 'containers');
-
-// actions路径
-var ACTIONS_PATH = path.resolve(SRC_PATH, 'actions');
-
-// reducers路径
-var REDUCERS_PATH = path.resolve(SRC_PATH, 'reducers');
-
-// constants路径
-var CONSTANTS_PATH = path.resolve(SRC_PATH, 'constants');
-
-// assets路径
-var ASSETS_PATH = path.resolve(SRC_PATH, 'assets');
-
-
-// 入口文件路径
-var IndexPath = path.resolve(SRC_PATH, 'index.jsx');
+var port = 3000;
 
 console.log(chalk.green(
   `
   info:
-    端口 3000
+    端口 ${port}
     开发配置
   `
 ));
@@ -50,28 +30,20 @@ module.exports = {
 
   entry: [
     'react-hot-loader/patch',
-    // activate HMR for React
 
-    'webpack-dev-server/client?http://localhost:3000',
-    // bundle the client for webpack-dev-server
-    // and connect to the provided endpoint
+    `webpack-dev-server/client?http://localhost:${port}`,
 
     'webpack/hot/only-dev-server',
-    // bundle the client for hot reloading
-    // only- means to only hot reload for successful updates
 
     IndexPath,
-    // the entry point of our app
   ],
 
   output: {
     filename: 'bundle.js',
-    // the output bundle
 
     path: DIST_PATH,
 
-    publicPath: '/static/'
-    // necessary for HMR to know where to load the hot update chunks
+    publicPath: '/static/',
   },
 
   devtool: 'inline-source-map',
@@ -189,7 +161,7 @@ module.exports = {
   ],
 
   devServer: {
-        port: 3000,
+        port: port,
         host: '0.0.0.0',
         historyApiFallback: true,
         stats: {
