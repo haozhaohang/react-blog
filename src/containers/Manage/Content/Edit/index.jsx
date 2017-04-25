@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Form, Input, Button, Breadcrumb } from 'antd';
+import { Form, Input, Button, Breadcrumb, Select } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from 'Actions/contentEdit';
 import { goBack } from 'react-router-redux';
@@ -11,6 +11,7 @@ import './index.styl';
 
 const { Item: FormItem } = Form;
 const { Item: BreadcrumbItem } = Breadcrumb;
+const { Option } = Select;
 
 const editorStyle = {
     width: "100%",
@@ -72,7 +73,14 @@ class ContentEdit extends Component {
             rules: [
                 { required: true, type: 'string', message: '标题为必填参数' }
             ]
-        })
+        });
+
+        const classifyDecorator = getFieldDecorator('classify', {
+            initialValue: '',
+            rules: [
+                { required: true, type: 'string', message: '标题为必填参数' }
+            ]
+        });
 
         return (
             <div className="content-edit-wrapper">
@@ -87,6 +95,20 @@ class ContentEdit extends Component {
                                 <Input />
                             )}
                         </FormItem>
+
+                        <FormItem label="文章分类">
+                            {classifyDecorator(
+                                <Select>
+                                    <Option value="web">Web前端</Option>
+                                    <Option value="mobile">移动前端</Option>
+                                    <Option value="skill">授人以渔</Option>
+                                    <Option value="ui">UI设计</Option>
+                                    <Option value="wordpress">WP视点</Option>
+                                    <Option value="record">朝花夕拾</Option>
+                                    <Option value="code">程序人生</Option>
+                                </Select>
+                            )}
+                        </FormItem>
                     </Form>
                 </div>
                 {
@@ -99,7 +121,6 @@ class ContentEdit extends Component {
                     null
                 }
                 <Button onClick={this.handleSubmint}>保存</Button>
-                <div dangerouslySetInnerHTML={{__html: content}} />
             </div>
         );
     }

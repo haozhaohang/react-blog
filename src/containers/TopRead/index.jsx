@@ -16,7 +16,7 @@ const TopRead = () =>
                 <li><a>浏览简介</a></li>
                 <li><a>友情链接</a></li>
                 <li><a>RSS订阅</a></li>
-                <li><a>Github</a></li>
+                <li><a href="https://github.com/haozhaohang">Github</a></li>
             </ul>
         </section>
     );

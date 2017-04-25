@@ -23,7 +23,7 @@ const ArticleIntro = ({value}) =>
                 </a>
 
                 <section className="main">
-                    <p className="mian-content" dangerouslySetInnerHTML={{__html: value.content}}></p>
+                    <p className="content" dangerouslySetInnerHTML={{__html: value.content}}></p>
                     <p className="lick-full">
                         <Link to={`/article?id=${value._id}`}>
                             查看全文
