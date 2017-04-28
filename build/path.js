@@ -30,6 +30,9 @@ var CONSTANTS_PATH = path.resolve(SRC_PATH, 'constants');
 // assets路径
 var ASSETS_PATH = path.resolve(SRC_PATH, 'assets');
 
+// html tpl 路径
+var HTML_TPL_PATH = path.resolve(ROOT_PATH, 'index.html');
+
 // 入口文件路径
 var IndexPath = path.resolve(SRC_PATH, 'index.jsx');
 
@@ -44,5 +47,6 @@ module.exports = {
     REDUCERS_PATH,
     CONSTANTS_PATH,
     ASSETS_PATH,
+    HTML_TPL_PATH,
     IndexPath
 };

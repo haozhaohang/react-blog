@@ -1,48 +1,159 @@
-var path = require('path');
 var webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+var {
+        ROOT_PATH,
+        SRC_PATH,
+        DIST_PATH,
+        NODE_MODULES_PATH,
+        COMPONENT_PATH,
+        CONTAINERS_PATH,
+        ACTIONS_PATH,
+        REDUCERS_PATH,
+        CONSTANTS_PATH,
+        ASSETS_PATH,
+        IndexPath
+} = require('./path');
 
-// 根路径
-var ROOT_PATH = path.resolve(__dirname, '../');
-
-// 源码路径
-var SRC_PATH = path.resolve(ROOT_PATH, 'src');
-
-// 产出路径
-var DIST_PATH = path.resolve(ROOT_PATH, 'dist');
-
-// 模块路径
-var NODE_MODULES_PATH = path.resolve(ROOT_PATH, 'node_modules');
-
-// 入口文件路径
-var IndexPath = path.resolve(SRC_PATH, 'index.js');
+var port = 3000;
 
 module.exports = {
-  entry: IndexPath,
+    context: ROOT_PATH,
 
-  output: {
-    filename: 'static/bundle.js',
-    path: DIST_PATH,
-    publicPath: '/'
-  },
+        entry: {
+                main: IndexPath,
+                vendor: [
+                    'babel-polyfill',
+                    'whatwg-fetch',
+                    'moment',
+                    'react',
+                    'react-dom',
+                    'classnames',
+                    'react-redux',
+                    'react-router',
+                    'react-router-redux',
+                    'redux',
+                    'redux-thunk',
+                ],
+                abc: [
+                    'antd',
+                    'normalize'
+                ]
+        },
 
-  devtool: 'source-map',
+    output: {
+        filename: '[name].js',
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        use: [
-          'babel-loader'
+        path: DIST_PATH,
+
+        publicPath: '/public/',
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.jsx?$/,
+                use: [
+                    'babel-loader',
+                ],
+                exclude: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                ],
+            },
+            {
+                test: /\.styl$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "stylus-loader"
+                ],
+            },
+            {
+                test: /\.(sass|scss)$/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: true,
+                            localIdentName: "[path][name]---[local]---[hash:base64:5]",
+                        },
+                    },
+                    "sass-loader",
+                ],
+            },
+            {
+                test: /\.(gif|jpe?g|png)$/,
+                include: SRC_PATH,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 20000,
+                        },
+                    },
+                ],
+            },
+            {
+                    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                    use: 'url-loader'
+            },
+            {
+                    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                    use: 'file-loader'
+            },
+            {
+                    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                    use: 'url-loader'
+            },
         ],
-        exclude: /node_modules/
-      }
-    ]
-  },
+    },
 
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      comments: false
-    })
-  ]
+    resolve: {
+        alias: {
+            Components: COMPONENT_PATH,
+            Containers: CONTAINERS_PATH,
+            Actions: ACTIONS_PATH,
+            Reducers: REDUCERS_PATH,
+            Constants: CONSTANTS_PATH,
+            Assets: ASSETS_PATH,
+        },
+        extensions: [".js", ".json", ".jsx", ".css", ".scss",],
+    },
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+
+        new webpack.NamedModulesPlugin(),
+
+        new webpack.NoEmitOnErrorsPlugin(),
+
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: false,
+            }
+        }),
+
+        new webpack.optimize.CommonsChunkPlugin({
+                names: ['vendor', 'abc'],// 指定公共 bundle 的名字。
+                minChunks: Infinity,
+        }),
+
+    ],
 };

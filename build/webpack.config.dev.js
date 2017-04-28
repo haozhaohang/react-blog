@@ -18,7 +18,7 @@ var {
 var port = 3000;
 
 console.log(chalk.green(
-  `
+    `
   info:
     端口 ${port}
     开发配置
@@ -26,141 +26,135 @@ console.log(chalk.green(
 ));
 
 module.exports = {
-  context: ROOT_PATH,
+    context: ROOT_PATH,
 
-  entry: [
-    'react-hot-loader/patch',
+    entry: [
+        'react-hot-loader/patch',
 
-    `webpack-dev-server/client?http://localhost:${port}`,
+        `webpack-dev-server/client?http://localhost:${port}`,
 
-    'webpack/hot/only-dev-server',
+        'webpack/hot/only-dev-server',
 
-    IndexPath,
-  ],
-
-  output: {
-    filename: 'bundle.js',
-
-    path: DIST_PATH,
-
-    publicPath: '/static/',
-  },
-
-  devtool: 'inline-source-map',
-
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        use: [
-          'babel-loader',
-        ],
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-        ],
-      },
-      {
-        test: /\.styl$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "stylus-loader"
-        ],
-      },
-      {
-        test: /\.(sass|scss)$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: true, // css-modules
-              localIdentName: "[path][name]---[local]---[hash:base64:5]", // 默认是哈希算法[hash:base64], 可以进行定制哈希字符串格式
-            },
-          },
-          "sass-loader",
-        ],
-      },
-      {
-        test: /\.(gif|jpe?g|png)$/,
-        include: SRC_PATH,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10000,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(woff|woff2)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 20000,
-            },
-          },
-        ],
-      },
-      {
-          test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-          use: 'url-loader'
-      },
-      {
-          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-          use: 'file-loader'
-      },
-      {
-          test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-          use: 'url-loader'
-      },
-    //   {
-    //     test: /\.jsx?$/,
-    //     include: SRC_PATH,
-    //     enforce: 'pre',
-    //     use: [
-    //       {
-    //         loader: 'eslint-loader',
-    //         options: {
-    //           emitWarning: true,
-    //         },
-    //       },
-    //     ],
-    //   }
+        IndexPath,
     ],
-  },
 
-  resolve: {
-    alias: {
-      Components: COMPONENT_PATH,
-      Containers: CONTAINERS_PATH,
-      Actions: ACTIONS_PATH,
-      Reducers: REDUCERS_PATH,
-      Constants: CONSTANTS_PATH,
-      Assets: ASSETS_PATH,
+    output: {
+        filename: '[name].js',
+
+        path: DIST_PATH,
+
+        publicPath: '/public/',
     },
-    extensions: [".js", ".json", ".jsx", ".css", ".scss",],
-  },
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    // enable HMR globally
+    devtool: 'inline-source-map',
 
-    new webpack.NamedModulesPlugin(),
-    // prints more readable module names in the browser console on HMR updates
+    module: {
+        rules: [{
+                test: /\.jsx?$/,
+                use: [
+                    'babel-loader',
+                ],
+                exclude: /node_modules/,
+            }, {
+                test: /\.css$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                ],
+            }, {
+                test: /\.styl$/,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "stylus-loader"
+                ],
+            }, {
+                test: /\.(sass|scss)$/,
+                use: [
+                    "style-loader", {
+                        loader: "css-loader",
+                        options: {
+                            modules: true, // css-modules
+                            localIdentName: "[path][name]---[local]---[hash:base64:5]", // 默认是哈希算法[hash:base64], 可以进行定制哈希字符串格式
+                        },
+                    },
+                    "sass-loader",
+                ],
+            }, {
+                test: /\.(gif|jpe?g|png)$/,
+                include: SRC_PATH,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000,
+                    },
+                }, ],
+            }, {
+                test: /\.(woff|woff2)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 20000,
+                    },
+                }, ],
+            }, {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                use: 'url-loader'
+            }, {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                use: 'file-loader'
+            }, {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                use: 'url-loader'
+            },
+            //   {
+            //     test: /\.jsx?$/,
+            //     include: SRC_PATH,
+            //     enforce: 'pre',
+            //     use: [
+            //       {
+            //         loader: 'eslint-loader',
+            //         options: {
+            //           emitWarning: true,
+            //         },
+            //       },
+            //     ],
+            //   }
+        ],
+    },
 
-    new webpack.NoEmitOnErrorsPlugin(),
-    // do not emit compiled assets that include errors
-  ],
+    resolve: {
+        alias: {
+            Components: COMPONENT_PATH,
+            Containers: CONTAINERS_PATH,
+            Actions: ACTIONS_PATH,
+            Reducers: REDUCERS_PATH,
+            Constants: CONSTANTS_PATH,
+            Assets: ASSETS_PATH,
+        },
+        extensions: [".js", ".json", ".jsx", ".css", ".scss", ],
+    },
 
-  devServer: {
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        // enable HMR globally
+
+        new webpack.NamedModulesPlugin(),
+        // prints more readable module names in the browser console on HMR updates
+
+        new webpack.NoEmitOnErrorsPlugin(),
+        // do not emit compiled assets that include errors
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor', // 指定公共 bundle 的名字。
+            minChunks: function(module) {
+                // 该配置假定你引入的 vendor 存在于 node_modules 目录中
+                return module.context && module.context.indexOf('node_modules') !== -1;
+            }
+        })
+    ],
+
+    devServer: {
         port: port,
         host: '0.0.0.0',
         historyApiFallback: true,
