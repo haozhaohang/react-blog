@@ -37,8 +37,8 @@ class Content extends Component {
                 dataIndex: 'author1',
             },
             {
-                title: '内容',
-                dataIndex: 'content',
+                title: '类型',
+                dataIndex: 'classify',
             },
             {
                 title: '操作',

@@ -17,24 +17,6 @@ const Main = () =>
                 <BreadcrumbItem>Web前端</BreadcrumbItem>
             </Breadcrumb>
             <ul className={style.list}>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
             </ul>
         </div>
     );
