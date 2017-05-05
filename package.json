@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config ./build/webpack.config.dev.js",
     "clear": "rimraf ./dist",
-    "postbuild": "copyfiles index.html dist",
     "build": "cross-env NODE_ENV=production webpack -p --config ./build/webpack.config.production.js",
     "lint": "eslint src --ext \".js,.jsx\" --no-ignore .eslintrc.js",
     "lint:fix": "eslint --fix src --ext \".js,.jsx\" --no-ignore .eslintrc.js"
@@ -23,7 +22,6 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-2": "^6.22.0",
     "chalk": "^1.1.3",
-    "copyfiles": "^1.2.0",
     "cross-env": "^3.2.4",
     "css-loader": "^0.27.3",
     "eslint": "^3.17.1",
@@ -60,6 +58,7 @@
     "react-thunk": "^1.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
+    "wangeditor": "^2.1.23",
     "whatwg-fetch": "^2.0.3"
   }
 }
