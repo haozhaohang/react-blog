@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import moment from 'moment';
+import { commons } from 'Constants';
 
 // css
 import './index.styl';
@@ -32,8 +34,8 @@ const ArticleIntro = ({value}) =>
                 </section>
 
                 <div className="msg">
-                    <span>2016/11</span>
-                    <span>15&nbsp;&nbsp;周二</span>
+                    <span>{moment(value.createTime).format('YYYY/MM/')}</span>
+                    <span>{moment(value.createTime).format('DD')}&nbsp;&nbsp;{commons.WEEK_LIST[moment(value.createTime).format('E')]}</span>
                 </div>
 
                 <footer className="tag">
@@ -49,12 +51,12 @@ const ArticleIntro = ({value}) =>
                     </span>
                     <span>
                         <a>
-                            0 条评论
+                            {value.comments.length} 条评论
                         </a>
                     </span>
                     <span>
                         <a>
-                            1338℃热度
+                            {value.views}℃热度
                         </a>
                     </span>
                 </footer>
