@@ -1,11 +1,11 @@
 import React from 'react';
 
 // component
-import TopRead from 'Containers/TopRead';
-import Search from 'Containers/Search';
-import Achive from 'Containers/Achive';
-import TagCloud from 'Containers/TagCloud';
-import FriendlyLink from 'Containers/FriendlyLink';
+import TopRead from 'Components/TopRead';
+import Search from 'Components/Search';
+import Achive from 'Components/Achive';
+import TagCloud from 'Components/TagCloud';
+import FriendlyLink from 'Components/FriendlyLink';
 
 // css
 import style from './index.scss';

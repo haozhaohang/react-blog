@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Header from 'Containers/Header';
+import Header from 'Components/Header';
 
 import './index.styl';
 

@@ -3,7 +3,7 @@ import * as actions from 'Actions/home';
 import { connect } from 'react-redux';
 
 // Component
-import Banner from 'Containers/Banner';
+import Banner from 'Components/Banner';
 import Main from './Main';
 import Aside from './Aside';
 
