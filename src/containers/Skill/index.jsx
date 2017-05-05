@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as actions from 'Actions/skill';
+import { connect } from 'react-redux';
 
 // Component
 import Main from './Main';
@@ -7,16 +9,42 @@ import Aside from './Aside';
 // css
 import style from './index.scss';
 
-const Skill = () =>
-    (
-        <div className={style.container}>
-            <div className={style.main}>
-                <Main />
-            </div>
-            <div className={style.aside}>
-                <Aside />
-            </div>
-        </div>
-    );
+class Skill extends Component {
+    componentDidMount() {
+        const { fetchList, pageSize } = this.props;
 
-export default Skill;
+        fetchList({ pageSize, classify: 'skill' });
+    }
+
+    render() {
+        const { list, total } = this.props;
+
+        return (
+            <div className={style.container}>
+                <div className={style.main}>
+                    <Main
+                        list={list}
+                    />
+                </div>
+                <div className={style.aside}>
+                    <Aside />
+                </div>
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = ({ skill }, { location: { query } }) => {
+
+    const { list, total, pageSize } = skill;
+    return {
+        list,
+        total,
+        pageSize,
+    };
+};
+
+const mapDispatchToProps = { ...actions };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Skill);
+

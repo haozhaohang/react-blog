@@ -2,11 +2,10 @@ import { api, actionType } from 'Constants';
 import { get } from 'Assets/js/request';
 import { actionCreator } from 'Assets/js/util';
 
-const finishNewList = actionCreator(actionType.HOME_NEW_LIST_SUCCESS);
+const finishList = actionCreator(actionType.WORDPRESS_LIST_SUCCESS);
 
-// 获取最新文章列表
-export function fetchNewList(params = {}) {
-
+// 获取移动前端列表
+export function fetchList(params = {}) {
     return async (dispath) => {
         let payload;
 
@@ -16,6 +15,6 @@ export function fetchNewList(params = {}) {
             return;
         }
 
-        dispath(finishNewList(payload));
+        dispath(finishList(payload));
     }
 }

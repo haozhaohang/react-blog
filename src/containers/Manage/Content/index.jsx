@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Button, Table, Form, Input } from 'antd';
+import moment from 'moment';
 import * as actions from 'Actions/content';
 import * as router from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
@@ -27,6 +28,7 @@ class Content extends Component {
             {
                 title: '创建时间',
                 dataIndex: 'createTime',
+                render: val => moment(val).format('YYYY-MM-DD'),
             },
             {
                 title: '浏览量',

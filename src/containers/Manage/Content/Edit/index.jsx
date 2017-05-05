@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from 'Actions/contentEdit';
 import { goBack } from 'react-router-redux';
 import Editor from 'Components/Editor';
+import { commons } from 'Constants';
 
 // css
 import './index.styl';
@@ -76,11 +77,13 @@ class ContentEdit extends Component {
         });
 
         const classifyDecorator = getFieldDecorator('classify', {
-            initialValue: '',
+            initialValue: info.classify,
             rules: [
                 { required: true, type: 'string', message: '标题为必填参数' }
             ]
         });
+
+        const options = Object.entries(commons.CLASSIFY_LIST).map(([value, label]) => <Option value={value}>{label}</Option>);
 
         return (
             <div className="content-edit-wrapper">
@@ -99,13 +102,7 @@ class ContentEdit extends Component {
                         <FormItem label="文章分类">
                             {classifyDecorator(
                                 <Select>
-                                    <Option value="web">Web前端</Option>
-                                    <Option value="mobile">移动前端</Option>
-                                    <Option value="skill">授人以渔</Option>
-                                    <Option value="ui">UI设计</Option>
-                                    <Option value="wordpress">WP视点</Option>
-                                    <Option value="record">朝花夕拾</Option>
-                                    <Option value="code">程序人生</Option>
+                                    {options}
                                 </Select>
                             )}
                         </FormItem>

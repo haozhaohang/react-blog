@@ -9,7 +9,7 @@ import style from './index.scss';
 
 const BreadcrumbItem = Breadcrumb.Item;
 
-const Main = () =>
+const Main = ({ list }) =>
     (
         <div className={style.main}>
             <Breadcrumb>
@@ -17,24 +17,7 @@ const Main = () =>
                 <BreadcrumbItem>朝花夕拾</BreadcrumbItem>
             </Breadcrumb>
             <ul className={style.list}>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
-                <li>
-                    <ArticleIntro />
-                </li>
+                {list.map((val, index) => <ArticleIntro key={index} value={val} />)}
             </ul>
         </div>
     );
