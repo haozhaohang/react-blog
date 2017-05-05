@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
 
-import style from './index.scss';
+import './index.styl';
 
 class BreadcrumbItem extends PureComponent {
 
@@ -13,15 +13,15 @@ class BreadcrumbItem extends PureComponent {
         let item;
 
         if ('href' in this.props) {
-            item = <a {...restProps}>{children}</a>;
+            item = <a {...restProps} target="_self">{children}</a>;
         } else {
             item = <span {...restProps}>{children}</span>;
         }
 
         return (
-            <span className={style.item}>
+            <span className="item">
                 {item}
-                <span className={style.separator}>
+                <span className="separator">
                     {separator}
                 </span>
             </span>

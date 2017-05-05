@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
-const Breadcrumb = ({ children }, ...resetProps) => (
-    <span className={style.container} {...resetProps} >
+const Breadcrumb = ({ children }) => (
+    <span className="breadcrumb-wrapper" >
         {children}
     </span>
     );
