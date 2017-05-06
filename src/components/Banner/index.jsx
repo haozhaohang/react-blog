@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 let timer;
 
@@ -80,9 +80,9 @@ class Banner extends Component {
 
     render() {
         return (
-            <div className={style.banner}>
+            <div className="banner-wrapper">
                 <ul
-                    className={style.picList}
+                    className="banner-picList"
                     onMouseOver={handlePicOver}
                     onMouseOut={this.handlePicOut}
                 >
@@ -90,15 +90,14 @@ class Banner extends Component {
                         this.handleCreateList()
                     }
                 </ul>
-                <ol className={style.btnList} />
                 <span
-                    className={style.prev}
+                    className="banner-prev"
                     onClick={this.handleChangePrev}
                     onMouseOver={handlePicOver}
                     onMouseOut={this.handlePicOut}
                 />
                 <span
-                    className={style.next}
+                    className="banner-next"
                     onClick={this.handleChangeNext}
                     onMouseOver={handlePicOver}
                     onMouseOut={this.handlePicOut}

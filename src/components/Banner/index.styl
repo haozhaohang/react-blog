@@ -1,0 +1,90 @@
+$banner-height = 300px;
+$arrow_height = 50px;
+
+.banner-wrapper {
+    width: 100%;
+    height: $banner-height;
+    margin: 10px auto 0;
+    position: relative;
+
+    .banner-picList {
+        width: 1200px;
+        height: $banner-height;
+        margin: 0 auto;
+        perspective: 800px;
+        li {
+            width: 40px;
+            height: inherit;
+            float: left;
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: center center -150px;
+            span {
+                width: inherit;
+                height: inherit;
+                position: absolute;
+                top: 0;
+                left: 0;
+                &:nth-of-type(1) {
+                    background: url('./img/1.jpg') no-repeat;
+                }
+                &:nth-of-type(2) {
+                    background: url('./img/2.jpg') no-repeat;
+                    // transform-origin: top;
+                    // transform: rotateX( -90deg );
+                    top: -300px;
+                    transform-origin: bottom;
+                    transform: rotateX(90deg)
+                }
+                &:nth-of-type(3) {
+                    background: url('./img/3.jpg') no-repeat;
+                    // transform: translateZ( -300px );
+                    transform: translateZ(-300px) rotateX(180deg);
+                }
+                &:nth-of-type(4) {
+                    background: url('./img/4.jpg') no-repeat;
+                    // transform-origin: bottom;
+                    // transform: rotateX( 90deg );
+                    transform-origin: top;
+                    transform: rotateX(-90deg); top:300px;
+                }
+            }
+            i {
+                width: 300px;
+                height: inherit;
+                background: #eee;
+                position: absolute;
+                &:nth-of-type(1) {
+                    left: 0;
+                    transform-origin: left;
+                    transform: rotateY( 90deg );
+                }
+                &:nth-of-type(2) {
+                    right: 0;
+                    transform-origin: right;
+                    transform: rotateY( -90deg );
+                }
+            }
+        }
+    }
+
+    .banner-prev {
+        width: 50px;
+        height: $arrow_height;
+        position: absolute;
+        top: 125px;
+        left: 0;
+        background: #27cfc3 url( './img/arrow_prev_white.png' ) no-repeat;
+        cursor: pointer;
+    }
+
+    .banner-next {
+        width: 50px;
+        height: $arrow_height;
+        position: absolute;
+        top: 125px;
+        right: 0;
+        background: #27cfc3 url( './img/arrow_next_white.png' ) no-repeat;
+        cursor: pointer;
+    }
+}
