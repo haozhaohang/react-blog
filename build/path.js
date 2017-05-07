@@ -36,6 +36,9 @@ var HTML_TPL_PATH = path.resolve(ROOT_PATH, 'index.html');
 // 入口文件路径
 var IndexPath = path.resolve(SRC_PATH, 'index.jsx');
 
+// 图标路径
+var faviconPath = path.resolve(ROOT_PATH, 'favicon.ico');
+
 module.exports = {
     ROOT_PATH,
     SRC_PATH,
@@ -48,5 +51,6 @@ module.exports = {
     CONSTANTS_PATH,
     ASSETS_PATH,
     HTML_TPL_PATH,
-    IndexPath
+    IndexPath,
+    faviconPath,
 };

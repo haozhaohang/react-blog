@@ -1,6 +1,7 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var {
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const {
         ROOT_PATH,
         SRC_PATH,
         DIST_PATH,
@@ -11,33 +12,21 @@ var {
         REDUCERS_PATH,
         CONSTANTS_PATH,
         ASSETS_PATH,
-        IndexPath
+        HTML_TPL_PATH,
+        IndexPath,
+        faviconPath,
 } = require('./path');
+const extractCSS = new ExtractTextPlugin('css/[name]-one.css');
+const extractSTYL = new ExtractTextPlugin('css/[name]-two.css');
+const extractSASS = new ExtractTextPlugin('css/[name]-tree.css');
 
-var port = 3000;
+const port = 3000;
 
 module.exports = {
     context: ROOT_PATH,
 
         entry: {
-                main: IndexPath,
-                vendor: [
-                    'babel-polyfill',
-                    'whatwg-fetch',
-                    'moment',
-                    'react',
-                    'react-dom',
-                    'classnames',
-                    'react-redux',
-                    'react-router',
-                    'react-router-redux',
-                    'redux',
-                    'redux-thunk',
-                ],
-                abc: [
-                    'antd',
-                    'normalize'
-                ]
+            main: IndexPath,
         },
 
     output: {
@@ -59,23 +48,20 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    "style-loader",
+                use: extractCSS .extract([
                     "css-loader",
-                ],
+                ]),
             },
             {
                 test: /\.styl$/,
-                use: [
-                    "style-loader",
+                use: extractSTYL .extract([
                     "css-loader",
-                    "stylus-loader"
-                ],
+                    "stylus-loader",
+                ]),
             },
             {
                 test: /\.(sass|scss)$/,
-                use: [
-                    "style-loader",
+                use: extractSASS .extract([
                     {
                         loader: "css-loader",
                         options: {
@@ -84,7 +70,7 @@ module.exports = {
                         },
                     },
                     "sass-loader",
-                ],
+                ]),
             },
             {
                 test: /\.(gif|jpe?g|png)$/,
@@ -110,16 +96,16 @@ module.exports = {
                 ],
             },
             {
-                    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                    use: 'url-loader'
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                use: 'url-loader'
             },
             {
-                    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                    use: 'file-loader'
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                use: 'file-loader'
             },
             {
-                    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                    use: 'url-loader'
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                use: 'url-loader'
             },
         ],
     },
@@ -137,23 +123,32 @@ module.exports = {
     },
 
     plugins: [
+        extractCSS,
+
+        extractSTYL,
+
+        extractSASS,
+
         new webpack.HotModuleReplacementPlugin(),
 
         new webpack.NamedModulesPlugin(),
 
         new webpack.NoEmitOnErrorsPlugin(),
 
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: false,
-            }
-        }),
-
         new webpack.optimize.CommonsChunkPlugin({
-                names: ['vendor', 'abc'],// 指定公共 bundle 的名字。
-                minChunks: Infinity,
+                name: 'vendor',// 指定公共 bundle 的名字。
+                minChunks: function (module) {
+                   // 该配置假定你引入的 vendor 存在于 node_modules 目录中
+                   return module.context && module.context.indexOf('node_modules') !== -1;
+                }
         }),
 
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: HTML_TPL_PATH,
+            inject: 'body',
+            favicon: faviconPath,
+            chunks: ['manifest', 'vendor', 'main']
+        }),
     ],
 };
