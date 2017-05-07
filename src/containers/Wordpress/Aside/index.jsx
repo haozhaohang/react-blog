@@ -8,28 +8,28 @@ import TagCloud from 'Components/TagCloud';
 import FriendlyLink from 'Components/FriendlyLink';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const Aside = () =>
     (
-        <aside className={style.aside}>
-            <section className={style.topRead}>
+        <aside className="word-press-aside-wrapper">
+            <section className="word-press-aside-topRead">
                 <TopRead />
             </section>
 
-            <section className={style.search}>
+            <section className="word-press-aside-search">
                 <Search />
             </section>
 
-            <section className={style.achive}>
+            <section className="word-press-aside-achive">
                 <Achive />
             </section>
 
-            <section className={style.tagCloud}>
+            <section className="word-press-aside-tagCloud">
                 <TagCloud />
             </section>
 
-            <section className={style.friendlyLink}>
+            <section className="word-press-aside-friendlyLink">
                 <FriendlyLink />
             </section>
         </aside>

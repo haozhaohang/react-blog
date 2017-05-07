@@ -7,7 +7,7 @@ import Main from './Main';
 import Aside from './Aside';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 class Wordpress extends Component {
     componentDidMount() {
@@ -20,13 +20,13 @@ class Wordpress extends Component {
         const { list, total } = this.props;
 
         return (
-            <div className={style.container}>
-                <div className={style.main}>
+            <div className="word-press-wrapper">
+                <div className="word-press-main">
                     <Main
                         list={list}
                     />
                 </div>
-                <div className={style.aside}>
+                <div className="word-press-aside">
                     <Aside />
                 </div>
             </div>

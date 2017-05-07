@@ -5,18 +5,18 @@ import Breadcrumb from 'Components/Breadcrumb';
 import ArticleIntro from 'Containers/ArticleIntro';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const BreadcrumbItem = Breadcrumb.Item;
 
 const Main = ({ list }) =>
     (
-        <div className={style.main}>
+        <div className="ui-main-wrapper">
             <Breadcrumb>
                 <BreadcrumbItem href="/">首页</BreadcrumbItem>
                 <BreadcrumbItem>UI设计</BreadcrumbItem>
             </Breadcrumb>
-            <ul className={style.list}>
+            <ul className="ui-main-list">
                 {list.map((val, index) => <ArticleIntro key={index} value={val} />)}
             </ul>
         </div>

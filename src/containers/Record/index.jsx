@@ -7,7 +7,7 @@ import Main from './Main';
 import Aside from './Aside';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 class Record extends Component {
     componentDidMount() {
@@ -20,13 +20,13 @@ class Record extends Component {
         const { list, total } = this.props;
 
         return (
-            <div className={style.container}>
-                <div className={style.main}>
+            <div className="record-wrapper">
+                <div className="record-main">
                     <Main
                         list={list}
                     />
                 </div>
-                <div className={style.aside}>
+                <div className="record-aside">
                     <Aside />
                 </div>
             </div>

@@ -5,18 +5,18 @@ import Breadcrumb from 'Components/Breadcrumb';
 import ArticleIntro from 'Containers/ArticleIntro';
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const BreadcrumbItem = Breadcrumb.Item;
 
 const Main = ({ list }) =>
     (
-        <div className={style.main}>
+        <div className="word-press-main-wrapper">
             <Breadcrumb>
                 <BreadcrumbItem href="/">首页</BreadcrumbItem>
                 <BreadcrumbItem>WP视点</BreadcrumbItem>
             </Breadcrumb>
-            <ul className={style.list}>
+            <ul className="wor-press-main-list">
                 {list.map((val, index) => <ArticleIntro key={index} value={val} />)}
             </ul>
         </div>
