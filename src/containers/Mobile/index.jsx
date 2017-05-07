@@ -20,7 +20,7 @@ class Mobile extends Component {
         const { list, total } = this.props;
 
         return (
-            <div className="mobile-container">
+            <div className="mobile-wrapper">
                 <div className="mobile-main">
                     <Main
                         list={list}

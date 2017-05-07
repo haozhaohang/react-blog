@@ -1,17 +1,19 @@
 .header-wrapper {
-    width: 100%;
+    min-width: 1200px;
     height: 74px;
+    margin: 0 auto;
     background: #eaebed;
     background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#d4d7db));
     box-shadow: 0 4px 4px rgba(0,0,0,.2);
 
     .header-containers {
+        display: flex;
         width: 1200px;
         margin: 0 auto;
     }
 
     .header-logo {
-        float: left;
+        flex: 1;
         h1 {
             height: 74px;
             line-height: 74px;
@@ -19,7 +21,6 @@
     }
 
     .header-list {
-        float: right;
         a {
             display: inline-block;
             width: 90px;
