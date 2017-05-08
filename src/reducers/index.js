@@ -1,9 +1,3 @@
-import userList from './user';
-import userEdit from './userEdit'
-
-import contentList from './content';
-import contentEdit from './contentEdit';
-
 import home from './home';
 import web from './web';
 import mobile from './mobile';
@@ -16,10 +10,6 @@ import code from './code';
 import article from './article';
 
 export default {
-    userList,
-    userEdit,
-    contentList,
-    contentEdit,
     home,
     web,
     mobile,

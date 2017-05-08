@@ -16,12 +16,6 @@ import Record from 'Containers/Record';
 import Code from 'Containers/Code';
 import Article from 'Containers/Article';
 
-import Manage from 'Containers/Manage';
-import User from 'Containers/Manage/User';
-import UserEdit from 'Containers/Manage/User/Edit';
-import Content from 'Containers/Manage/Content';
-import ContentEdit from 'Containers/Manage/Content/Edit';
-
 import rootReducer from 'Reducers';
 
 import './index.styl';
@@ -53,12 +47,6 @@ const App = () =>
                     <Route path="record" component={Record} />
                     <Route path="code" component={Code} />
                     <Route path="article" component={Article} />
-                </Route>
-                <Route path="manage" component={Manage}>
-                    <IndexRoute component={User} />
-                    <Route path="/manage/user/edit" component={UserEdit} />
-                    <Route path="/manage/content" component={Content} />
-                    <Route path="/manage/content/edit" component={ContentEdit} />
                 </Route>
             </Router>
         </Provider>
