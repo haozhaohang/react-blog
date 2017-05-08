@@ -27,25 +27,25 @@ img {
 }
 
 // public
-:global(.clearfix) {
+.clearfix {
     zoom: 1;
 }
 
-:global(.clearfix:after) {
+.clearfix:after {
     content: '';
     display: block;
     clear: both;
 }
 
-:global(.fl) {
+.fl {
     float: left;
 }
 
-:global(.fr) {
+.fr {
     float: right;
 }
 
-:global(.filter-containers) {
+.filter-containers {
     padding-bottom: 25px;
     display: flex;
     & > div:nth-of-type(1) {
@@ -53,7 +53,7 @@ img {
     }
 }
 
-:global(.main-containers) {
+.main-containers {
     padding-top: 25px;
     display: flex;
 }

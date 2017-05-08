@@ -23,11 +23,15 @@ class Home extends Component {
         return (
             <div className="home-wrapper">
                 <Banner />
-                <div className="home-container clearfix">
-                    <Main
-                        list={list}
-                    />
-                    <Aside />
+                <div className="home-container">
+                    <div className="home-main">
+                        <Main
+                            list={list}
+                        />
+                    </div>
+                    <div className="home-aside">
+                        <Aside />
+                    </div>
                 </div>
             </div>
         );

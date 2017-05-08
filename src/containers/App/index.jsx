@@ -24,7 +24,7 @@ import ContentEdit from 'Containers/Manage/Content/Edit';
 
 import rootReducer from 'Reducers';
 
-import './index.scss';
+import './index.styl';
 
 const middlewares = [thunk, routerMiddleware(browserHistory)];
 

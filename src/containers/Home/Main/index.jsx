@@ -1,17 +1,16 @@
 import React from 'react';
 
 // component
-import ArticleItem from 'Containers/ArticleItem';
 import ArticleIntro from 'Containers/ArticleIntro';
 
 
 // css
-import style from './index.scss';
+import './index.styl';
 
 const Main = ({ list }) =>
     (
-        <div className={style.main}>
-            <h2 className={style.title}>最新文章</h2>
+        <div className="home-main-wrapper">
+            <h2 className="home-main-title">最新文章</h2>
             <div>
                 {list.map((val, index) => <ArticleIntro key={index} value={val} />)}
             </div>
