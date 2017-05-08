@@ -60,19 +60,6 @@ module.exports = {
                 ]),
             },
             {
-                test: /\.(sass|scss)$/,
-                use: extractSASS .extract([
-                    {
-                        loader: "css-loader",
-                        options: {
-                            modules: true,
-                            localIdentName: "[path][name]---[local]---[hash:base64:5]",
-                        },
-                    },
-                    "sass-loader",
-                ]),
-            },
-            {
                 test: /\.(gif|jpe?g|png)$/,
                 include: SRC_PATH,
                 use: [

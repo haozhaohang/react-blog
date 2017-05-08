@@ -68,18 +68,6 @@ module.exports = {
                     "stylus-loader"
                 ],
             }, {
-                test: /\.(sass|scss)$/,
-                use: [
-                    "style-loader", {
-                        loader: "css-loader",
-                        options: {
-                            modules: true, // css-modules
-                            localIdentName: "[path][name]---[local]---[hash:base64:5]", // 默认是哈希算法[hash:base64], 可以进行定制哈希字符串格式
-                        },
-                    },
-                    "sass-loader",
-                ],
-            }, {
                 test: /\.(gif|jpe?g|png)$/,
                 include: SRC_PATH,
                 use: [{
