@@ -16,6 +16,8 @@ import Record from 'Containers/Record';
 import Code from 'Containers/Code';
 import Article from 'Containers/Article';
 
+import Explain from 'Containers/Explain';
+
 import rootReducer from 'Reducers';
 
 import './index.styl';
@@ -48,6 +50,7 @@ const App = () =>
                     <Route path="code" component={Code} />
                     <Route path="article" component={Article} />
                 </Route>
+                <Route path="/explain" component={Explain} />
             </Router>
         </Provider>
     );
