@@ -15,25 +15,10 @@ const FriendlyLink = () =>
                 </div>
                 <ul className="list">
                     <li>
-                        <a href="javascript">引领Web前沿</a>
+                        <a href="https://www.awesomes.cn/">Web前端开发资源库</a>
                     </li>
                     <li>
-                        <a href="javascript">引领Web前沿</a>
-                    </li>
-                    <li>
-                        <a href="javascript">引领Web前沿</a>
-                    </li>
-                    <li>
-                        <a href="javascript">引领Web前沿</a>
-                    </li>
-                    <li>
-                        <a href="javascript">引领Web前沿</a>
-                    </li>
-                    <li>
-                        <a href="javascript">引领Web前沿</a>
-                    </li>
-                    <li>
-                        <a href="javascript">引领Web前沿</a>
+                        <a href="http://www.qdfuns.com/">前端网（QDFuns） - WEB前端开发工程师专业网站，一站式服务平台！</a>
                     </li>
                 </ul>
             </div>
