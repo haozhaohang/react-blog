@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as actions from 'Actions/home';
+import * as router from 'Actions/router';
+import { equalByProps } from 'Assets/js/util';
 import { connect } from 'react-redux';
 
 // Component
@@ -11,14 +13,35 @@ import Aside from './Aside';
 import './index.styl';
 
 class Home extends Component {
-    componentDidMount() {
-        const { fetchNewList } = this.props;
+    constructor(props) {
+        super(props);
 
-        fetchNewList();
+        this.handlePageChange = this.handlePageChange.bind(this);
+    }
+
+    componentDidMount() {
+        const { pageIndex, pageSize, fetchNewList } = this.props;
+
+        fetchNewList({ pageIndex, pageSize });
+    }
+
+    componentDidUpdate(prevProp) {
+        const { pageIndex, pageSize, fetchNewList } = this.props;
+
+        if (equalByProps(prevProp, this.props, [ 'pageIndex' ])) {
+            fetchNewList({ pageIndex, pageSize });
+        }
+
+    }
+
+    handlePageChange(pageNum) {
+        const { list, total, pageIndex, updateQuery } = this.props;
+
+        updateQuery({ pageIndex: pageNum })
     }
 
     render() {
-        const { list, total } = this.props;
+        const { list, total, pageIndex, pageSize } = this.props;
 
         return (
             <div className="home-wrapper">
@@ -27,6 +50,10 @@ class Home extends Component {
                     <div className="home-main">
                         <Main
                             list={list}
+                            total={total}
+                            pageIndex={pageIndex}
+                            pageSize={pageSize}
+                            onPage={this.handlePageChange}
                         />
                     </div>
                     <div className="home-aside">
@@ -39,14 +66,17 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ home }, { location: { query } }) => {
+    const { newList, total, pageSize } = home;
+    const { pageIndex } = query;
 
-    const { newList, total } = home;
     return {
         total,
+        pageSize,
+        pageIndex: Number(pageIndex || 1),
         list: newList,
     };
 };
 
-const mapDispatchToProps = { ...actions };
+const mapDispatchToProps = { ...actions, ...router };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
