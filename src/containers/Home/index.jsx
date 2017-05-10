@@ -8,7 +8,7 @@ import { push } from 'react-router-redux';
 // Component
 import Banner from 'Components/Banner';
 import Main from './Main';
-import Aside from './Aside';
+import Aside from 'Components/Aside';
 
 // css
 import './index.styl';
