@@ -13,23 +13,23 @@ import './index.styl';
 const Aside = () =>
     (
         <aside className="ui-aside-wrapper">
-            <section className="ui-aside-topRead">
+            <section>
                 <TopRead />
             </section>
 
-            <section className="ui-aside-search">
+            <section>
                 <Search />
             </section>
 
-            <section className="ui-aside-achive">
+            <section>
                 <Achive />
             </section>
 
-            <section className="ui-aside-tagCloud">
+            <section>
                 <TagCloud />
             </section>
 
-            <section className="ui-aside-friendlyLink">
+            <section>
                 <FriendlyLink />
             </section>
         </aside>
