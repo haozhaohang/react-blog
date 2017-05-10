@@ -19,7 +19,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
 
-        this.handlePageChange = this.handlePageChange.bind(this);
+        this.handlePageChange = common.handlePageChange.bind(this);
         this.handleSearch = common.handleSearch.bind(this);
     }
 
@@ -35,13 +35,6 @@ class Home extends Component {
         if (equalByProps(prevProp, this.props, [ 'pageIndex' ])) {
             fetchNewList({ pageIndex, pageSize });
         }
-
-    }
-
-    handlePageChange(pageNum) {
-        const { list, total, pageIndex, updateQuery } = this.props;
-
-        updateQuery({ pageIndex: pageNum })
     }
 
     render() {

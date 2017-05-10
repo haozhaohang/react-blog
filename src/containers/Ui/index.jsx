@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as actions from 'Actions/ui';
+import * as router from 'Actions/router';
 import { connect } from 'react-redux';
 import { equalByProps, common } from 'Assets/js/util';
 import { push } from 'react-router-redux';
@@ -17,6 +18,7 @@ class Ui extends Component {
     constructor(props) {
         super(props);
 
+        this.handlePageChange = common.handlePageChange.bind(this);
         this.handleSearch = common.handleSearch.bind(this);
     }
 
@@ -26,8 +28,16 @@ class Ui extends Component {
         fetchList({ pageSize, classify: 'ui' });
     }
 
+    componentDidUpdate(prevProp) {
+        const { pageIndex, pageSize, fetchList } = this.props;
+
+        if (equalByProps(prevProp, this.props, [ 'pageIndex' ])) {
+            fetchList({ pageIndex, pageSize, classify: 'ui' });
+        }
+    }
+
     render() {
-        const { list, total } = this.props;
+        const { list, total, pageIndex, pageSize } = this.props;
 
         return (
             <div className="ui-wrapper">
@@ -35,6 +45,10 @@ class Ui extends Component {
                     <Main
                         path="UI设计"
                         list={list}
+                        total={total}
+                        pageIndex={pageIndex}
+                        pageSize={pageSize}
+                        onPage={this.handlePageChange}
                     />
                 </div>
                 <div className="ui-aside">
@@ -48,16 +62,18 @@ class Ui extends Component {
 }
 
 const mapStateToProps = ({ ui }, { location: { query } }) => {
-
     const { list, total, pageSize } = ui;
+    const { pageIndex } = query;
+
     return {
         list,
         total,
         pageSize,
+        pageIndex: Number(pageIndex || 1),
     };
 };
 
-const mapDispatchToProps = { ...actions, push };
+const mapDispatchToProps = { ...actions, ...router, push };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ui);
 

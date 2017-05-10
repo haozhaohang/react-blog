@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as actions from 'Actions/wordPress';
+import * as router from 'Actions/router';
 import { connect } from 'react-redux';
 import { equalByProps, common } from 'Assets/js/util';
 import { push } from 'react-router-redux';
@@ -17,6 +18,7 @@ class Wordpress extends Component {
     constructor(props) {
         super(props);
 
+        this.handlePageChange = common.handlePageChange.bind(this);
         this.handleSearch = common.handleSearch.bind(this);
     }
 
@@ -26,8 +28,16 @@ class Wordpress extends Component {
         fetchList({ pageSize, classify: 'wordPress' });
     }
 
+    componentDidUpdate(prevProp) {
+        const { pageIndex, pageSize, fetchList } = this.props;
+
+        if (equalByProps(prevProp, this.props, [ 'pageIndex' ])) {
+            fetchList({ pageIndex, pageSize, classify: 'wordPress' });
+        }
+    }
+
     render() {
-        const { list, total } = this.props;
+        const { list, total, pageIndex, pageSize } = this.props;
 
         return (
             <div className="word-press-wrapper">
@@ -35,6 +45,10 @@ class Wordpress extends Component {
                     <Main
                         path="WP视点"
                         list={list}
+                        total={total}
+                        pageIndex={pageIndex}
+                        pageSize={pageSize}
+                        onPage={this.handlePageChange}
                     />
                 </div>
                 <div className="word-press-aside">
@@ -48,16 +62,18 @@ class Wordpress extends Component {
 }
 
 const mapStateToProps = ({ wordPress }, { location: { query } }) => {
-
     const { list, total, pageSize } = wordPress;
+    const { pageIndex } = query;
+
     return {
         list,
         total,
         pageSize,
+        pageIndex: Number(pageIndex || 1),
     };
 };
 
-const mapDispatchToProps = { ...actions, push };
+const mapDispatchToProps = { ...actions, ...router, push };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wordpress);
 
