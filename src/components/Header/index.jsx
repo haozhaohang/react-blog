@@ -8,11 +8,14 @@ const Header = () =>
         <section className="header-wrapper">
             <header className="header-containers clearfix">
                 <div className="header-logo">
-                    <h1>
-                        logo
-                    </h1>
+                    <Link to="/">
+                        <h1>
+                            问崖
+                            <h2>前端博客 - 专注技术分享</h2>
+                        </h1>
+                    </Link>
                 </div>
-                <div className="header-list">
+                <nav className="header-list">
                     <Link to="/">首页</Link>
                     <Link to="web">Web前端</Link>
                     <Link to="mobile">移动前端</Link>
@@ -22,7 +25,7 @@ const Header = () =>
                     <Link to="record">朝花夕拾</Link>
                     <Link to="code">程序人生</Link>
                     <Link id="about-message">关于&留言</Link>
-                </div>
+                </nav>
             </header>
         </section>
     );

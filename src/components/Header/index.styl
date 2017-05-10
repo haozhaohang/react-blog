@@ -15,8 +15,19 @@
     .header-logo {
         flex: 1;
         h1 {
+            display: inline-block;
+            font-size: 32px;
+            font-family: cursive;
+            color: #555;
+            font-weight: 800;
             height: 74px;
             line-height: 74px;
+        }
+        h2 {
+            display: inline-block;
+            font-family: cursive;
+            color: #555;
+            text-indent: 1em;
         }
     }
 
@@ -25,9 +36,50 @@
             display: inline-block;
             width: 90px;
             height: 74px;
+            transition: .2s;
             line-height: 74px;
             text-align: center;
             color: #2b2b2b;
+
+            &:nth-of-type(1) {
+                border-bottom: 5px solid #b9d329;
+            }
+
+            &:nth-of-type(2) {
+                border-bottom: 5px solid #c0ebf7;
+            }
+
+            &:nth-of-type(3) {
+                border-bottom: 5px solid #b9d329;
+            }
+
+            &:nth-of-type(4) {
+                border-bottom: 5px solid #69bcf3;
+            }
+
+            &:nth-of-type(5) {
+                border-bottom: 5px solid #79d9f3;
+            }
+
+            &:nth-of-type(6) {
+                border-bottom: 5px solid #ffae5b;
+            }
+
+            &:nth-of-type(7) {
+                border-bottom: 5px solid #acd180;
+            }
+
+            &:nth-of-type(8) {
+                border-bottom: 5px solid #fab4cc;
+            }
+
+            &:nth-of-type(9) {
+                border-bottom: 5px solid #6cf;
+            }
+
+            &:hover {
+                border-bottom-width: 74px;
+            }
         }
     }
 }
