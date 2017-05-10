@@ -3,8 +3,8 @@ import * as actions from 'Actions/record';
 import { connect } from 'react-redux';
 
 // Component
-import Main from './Main';
-import Aside from './Aside';
+import Main from 'Components/Main';
+import Aside from 'Components/Aside';
 
 // css
 import './index.styl';
@@ -23,6 +23,7 @@ class Record extends Component {
             <div className="record-wrapper">
                 <div className="record-main">
                     <Main
+                        path="朝花夕拾"
                         list={list}
                     />
                 </div>

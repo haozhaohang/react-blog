@@ -3,8 +3,8 @@ import * as actions from 'Actions/skill';
 import { connect } from 'react-redux';
 
 // Component
-import Main from './Main';
-import Aside from './Aside';
+import Main from 'Components/Main';
+import Aside from 'Components/Aside';
 
 // css
 import './index.styl';
@@ -23,6 +23,7 @@ class Skill extends Component {
             <div className="skill-wrapper">
                 <div className="skill-main">
                     <Main
+                        path="授人以渔"
                         list={list}
                     />
                 </div>

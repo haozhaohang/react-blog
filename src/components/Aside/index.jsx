@@ -12,7 +12,7 @@ import './index.styl';
 
 const Aside = ({ onSearch }) =>
     (
-        <aside className="home-aside-wrapper">
+        <aside className="aside-wrapper">
             <section>
                 <TopRead />
             </section>

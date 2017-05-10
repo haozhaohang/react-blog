@@ -3,8 +3,8 @@ import * as actions from 'Actions/wordPress';
 import { connect } from 'react-redux';
 
 // Component
-import Main from './Main';
-import Aside from './Aside';
+import Main from 'Components/Main';
+import Aside from 'Components/Aside';
 
 // css
 import './index.styl';
@@ -23,6 +23,7 @@ class Wordpress extends Component {
             <div className="word-press-wrapper">
                 <div className="word-press-main">
                     <Main
+                        path="WP视点"
                         list={list}
                     />
                 </div>

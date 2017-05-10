@@ -3,8 +3,8 @@ import * as actions from 'Actions/ui';
 import { connect } from 'react-redux';
 
 // Component
-import Main from './Main';
-import Aside from './Aside';
+import Main from 'Components/Main';
+import Aside from 'Components/Aside';
 
 // css
 import style from './index.styl';
@@ -23,6 +23,7 @@ class Ui extends Component {
             <div className="ui-wrapper">
                 <div className="ui-main">
                     <Main
+                        path="UI设计"
                         list={list}
                     />
                 </div>

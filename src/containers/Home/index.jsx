@@ -3,6 +3,7 @@ import * as actions from 'Actions/home';
 import * as router from 'Actions/router';
 import { equalByProps } from 'Assets/js/util';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 // Component
 import Banner from 'Components/Banner';
@@ -17,6 +18,7 @@ class Home extends Component {
         super(props);
 
         this.handlePageChange = this.handlePageChange.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +42,12 @@ class Home extends Component {
         updateQuery({ pageIndex: pageNum })
     }
 
+    handleSearch(value) {
+        const { push } = this.props;
+
+        push(`/search-result?searchKey=${encodeURI(value)}`)
+    }
+
     render() {
         const { list, total, pageIndex, pageSize } = this.props;
 
@@ -57,7 +65,9 @@ class Home extends Component {
                         />
                     </div>
                     <div className="home-aside">
-                        <Aside />
+                        <Aside
+                            onSearch={this.handleSearch}
+                        />
                     </div>
                 </div>
             </div>
@@ -77,6 +87,6 @@ const mapStateToProps = ({ home }, { location: { query } }) => {
     };
 };
 
-const mapDispatchToProps = { ...actions, ...router };
+const mapDispatchToProps = { ...actions, ...router, push };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

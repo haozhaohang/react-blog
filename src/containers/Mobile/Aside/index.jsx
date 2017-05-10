@@ -10,7 +10,7 @@ import FriendlyLink from 'Components/FriendlyLink';
 // css
 import './index.styl';
 
-const Aside = () =>
+const Aside = ({ onSearch }) =>
     (
         <aside className="mobile-aside-wrapper">
             <section>
@@ -18,7 +18,9 @@ const Aside = () =>
             </section>
 
             <section>
-                <Search />
+                <Search
+                    onSearch={onSearch}
+                />
             </section>
 
             <section>
