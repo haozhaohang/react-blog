@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import * as actions from 'Actions/home';
 import * as router from 'Actions/router';
-import { equalByProps } from 'Assets/js/util';
 import { connect } from 'react-redux';
+import { equalByProps, common } from 'Assets/js/util';
 import { push } from 'react-router-redux';
+import { mixin } from 'core-decorators';
 
 // Component
 import Banner from 'Components/Banner';
@@ -13,12 +14,13 @@ import Aside from 'Components/Aside';
 // css
 import './index.styl';
 
+@mixin(common)
 class Home extends Component {
     constructor(props) {
         super(props);
 
         this.handlePageChange = this.handlePageChange.bind(this);
-        this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearch = common.handleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -40,12 +42,6 @@ class Home extends Component {
         const { list, total, pageIndex, updateQuery } = this.props;
 
         updateQuery({ pageIndex: pageNum })
-    }
-
-    handleSearch(value) {
-        const { push } = this.props;
-
-        push(`/search-result?searchKey=${encodeURI(value)}`)
     }
 
     render() {

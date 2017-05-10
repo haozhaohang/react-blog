@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import * as actions from 'Actions/web';
 import { connect } from 'react-redux';
+import { equalByProps, common } from 'Assets/js/util';
 import { push } from 'react-router-redux';
+import { mixin } from 'core-decorators';
 
 // Component
 import Main from 'Components/Main';
@@ -10,23 +12,18 @@ import Aside from 'Components/Aside';
 // css
 import './index.styl';
 
+@mixin(common)
 class Web extends Component {
     constructor(props) {
         super(props);
 
-        this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearch = common.handleSearch.bind(this);
     }
 
     componentDidMount() {
         const { fetchList, pageSize } = this.props;
 
         fetchList({ pageSize, classify: 'web' });
-    }
-
-    handleSearch(value) {
-        const { push } = this.props;
-
-        push(`/search-result?searchKey=${encodeURI(value)}`)
     }
 
     render() {
