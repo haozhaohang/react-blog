@@ -15,6 +15,7 @@ import Wordpress from 'Containers/Wordpress';
 import Record from 'Containers/Record';
 import Code from 'Containers/Code';
 import Article from 'Containers/Article';
+import SearchResult from 'Containers/SearchResult';
 
 import Explain from 'Containers/Explain';
 
@@ -49,6 +50,7 @@ const App = () =>
                     <Route path="record" component={Record} />
                     <Route path="code" component={Code} />
                     <Route path="article" component={Article} />
+                    <Route path="search-result" component={SearchResult} />
                 </Route>
                 <Route path="/explain" component={Explain} />
             </Router>
