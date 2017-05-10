@@ -16,7 +16,8 @@ const Main = ({value}) =>
         <div className="main-wrapper">
             <Breadcrumb>
                 <BreadcrumbItem href="/">首页</BreadcrumbItem>
-                <BreadcrumbItem>{commons.CLASSIFY_LIST[value.classify]}</BreadcrumbItem>
+                <BreadcrumbItem href={`/${value.classify}`}>{commons.CLASSIFY_LIST[value.classify]}</BreadcrumbItem>
+                <BreadcrumbItem>{value.title}</BreadcrumbItem>
             </Breadcrumb>
             <article className="article">
                 <div className="containers">
