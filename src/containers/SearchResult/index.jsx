@@ -31,7 +31,7 @@ class SearchResult extends Component {
     componentDidUpdate(prevProp) {
         const { pageIndex, pageSize, searchKey, fetchList } = this.props;
 
-        if (equalByProps(prevProp, this.props, [ 'pageIndex' ])) {
+        if (equalByProps(prevProp, this.props, [ 'pageIndex', 'searchKey' ])) {
             fetchList({ pageIndex, pageSize, title: searchKey });
         }
     }

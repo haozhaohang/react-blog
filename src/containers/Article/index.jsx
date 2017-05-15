@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'Actions/article';
+import { equalByProps } from 'Assets/js/util';
 
 // Component
 import Main from './Main';
@@ -16,6 +17,14 @@ class Article extends Component {
         const params = { id };
 
         fetchDetail(params);
+    }
+
+    componentDidUpdate(preProps) {
+        const { id, fetchDetail } = this.props;
+
+        if (equalByProps(preProps, this.props, ['id'])) {
+            fetchDetail({ id });
+        }
     }
 
     render(){
