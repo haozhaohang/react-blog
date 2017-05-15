@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 // css
 import './index.styl';
@@ -21,6 +22,8 @@ class Achive extends Component {
     }
 
     render() {
+        const { list: { hottest, newest, random } } = this.props;
+
         return (
             <section className="achive-wrapper">
                 <div className="achive-title">
@@ -31,18 +34,27 @@ class Achive extends Component {
                 {
                     this.state.currentList === 'hot'
                     ? <ul>
+                        {
+                            hottest.map( ({ _id, title, views }, index) => <li key={index}><b>{index + 1}</b><Link to={`/article?id=${_id}`}>{title}</Link><span>({views})</span></li> )
+                        }
                     </ul>
                     : ''
                 }
                 {
                     this.state.currentList === 'new'
                     ? <ul>
+                        {
+                            newest.map( ({ _id, title, views }, index) => <li key={index}><b>{index + 1}</b><Link to={`/article?id=${_id}`}>{title}</Link><span>({views})</span></li> )
+                        }
                     </ul>
                     : ''
                 }
                 {
                     this.state.currentList === 'random'
                     ? <ul>
+                        {
+                            random.map( ({ _id, title, views }, index) => <li key={index}><b>{index + 1}</b><Link to={`/article?id=${_id}`}>{title}</Link><span>({views})</span></li> )
+                        }
                     </ul>
                     : ''
                 }

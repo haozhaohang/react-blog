@@ -5,32 +5,31 @@
     ul {
         margin-top: 3px;
         li {
-            height: 25px;
+            display: flex;
+            align-items: center;
+            height: 28px;
+            padding: 0 2px;
             border-bottom: 1px solid #ececec;
             border-top: 1px solid #fff;
             background: #f7f7f7;
             transition: all .3s ease-in-out;
             a {
-                display: inline-block;
+                flex: 1;
                 overflow: hidden;
                 white-space: nowrap;
                 text-overflow: ellipsis;
-                line-height: 24px;
+                line-height: 26px;
                 color: #39c;
                 font-size: 14px;
                 transition: all .3s ease-in-out;
+                text-indent: 5px;
             }
             span {
-                float: right;
-                margin-right: 2px;
                 color: #ccc;
             }
-            &:before{
-                content: "1";
-                display: inline-block;
-                width: 15px;
-                height: 15px;
-                margin-left: 2px;
+            b {
+                width: 18px;
+                height: 18px;
                 border-radius: 50%;
                 font-size: 12px;
                 border: 2px solid #ccc;
