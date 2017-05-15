@@ -8,7 +8,7 @@ import { mixin } from 'core-decorators';
 
 // Component
 import Main from 'Components/Main';
-import Aside from 'Components/Aside';
+import Aside from 'Containers/Aside';
 
 // css
 import './index.styl';

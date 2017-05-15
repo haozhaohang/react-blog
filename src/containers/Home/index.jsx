@@ -9,7 +9,7 @@ import { mixin } from 'core-decorators';
 // Component
 import Banner from 'Components/Banner';
 import Main from './Main';
-import Aside from 'Components/Aside';
+import Aside from 'Containers/Aside';
 
 // css
 import './index.styl';

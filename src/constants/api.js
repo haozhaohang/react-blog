@@ -15,3 +15,5 @@ export const API_CONTENT_UPDATE = `${prefix}/content/update`;
 export const API_ARTICLE_LIST = `${prefix}/article/list`;
 
 export const API_ARTICLE_DETAIL = `${prefix}/article/detail`;
+
+export const API_ASIDE_ACHIVE_LIST = `${prefix}/achive/list`;

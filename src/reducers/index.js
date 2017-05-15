@@ -9,6 +9,8 @@ import code from './code';
 
 import article from './article';
 
+import aside from './aside';
+
 export default {
     home,
     web,
@@ -19,4 +21,5 @@ export default {
     record,
     code,
     article,
+    aside,
 };

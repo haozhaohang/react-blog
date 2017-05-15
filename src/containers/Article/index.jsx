@@ -4,7 +4,7 @@ import * as actions from 'Actions/article';
 
 // Component
 import Main from './Main';
-import Aside from 'Components/Aside';
+import Aside from 'Containers/Aside';
 
 
 // css
