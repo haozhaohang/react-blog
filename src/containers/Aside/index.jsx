@@ -32,7 +32,7 @@ class Aside extends Component {
         const { push } = this.props;
 
         push(`/search-result?searchKey=${encodeURI(value)}`)
-    },
+    }
 
     render() {
         const { achive, labels } = this.props;
