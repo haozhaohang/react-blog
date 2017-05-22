@@ -7,13 +7,13 @@ export const equalByProps = (obj1, obj2, props) =>
 
 // 设置通用mixin
 export const common = {
-  handleSearch(value) {
-    const { push } = this.props;
+    handleSearch(value) {
+        const { push } = this.props;
 
-    push(`/search-result?searchKey=${encodeURI(value)}`)
-  },
+        push(`/search-result?searchKey=${encodeURI(value)}`)
+    },
 
-  handlePageChange(pageNum) {
+    handlePageChange(pageNum) {
         const { pageIndex, updateQuery } = this.props;
 
         updateQuery({ pageIndex: pageNum })

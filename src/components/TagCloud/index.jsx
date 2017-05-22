@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 // css
 import './index.styl';
 
-const TagCloud = () =>
+const TagCloud = ({ list }) =>
     (
         <section className="tag-cloud-wrapper">
             <div className="title">
@@ -13,36 +14,9 @@ const TagCloud = () =>
                 <span>Tag Cloud</span>
             </div>
             <div className="list">
-                <a title="">H5</a>
-                <a title="">插件</a>
-                <a title="">规范</a>
-                <a title="">前端</a>
-                <a title="">react</a>
-                <a title="">H5</a>
-                <a title="">插件</a>
-                <a title="">规范</a>
-                <a title="">前端</a>
-                <a title="">react</a>
-                <a title="">H5</a>
-                <a title="">插件</a>
-                <a title="">规范</a>
-                <a title="">前端</a>
-                <a title="">react</a>
-                <a title="">H5</a>
-                <a title="">插件</a>
-                <a title="">规范</a>
-                <a title="">前端</a>
-                <a title="">react</a>
-                <a title="">H5</a>
-                <a title="">插件</a>
-                <a title="">规范</a>
-                <a title="">前端</a>
-                <a title="">react</a>
-                <a title="">H5</a>
-                <a title="">插件</a>
-                <a title="">规范</a>
-                <a title="">前端</a>
-                <a title="">react</a>
+                {
+                    list.map(({ name }, index) => <Link key={index} title="">{name}</Link>)
+                }
             </div>
         </section>
     );

@@ -17,3 +17,4 @@ export const API_ARTICLE_LIST = `${prefix}/article/list`;
 export const API_ARTICLE_DETAIL = `${prefix}/article/detail`;
 
 export const API_ASIDE_ACHIVE_LIST = `${prefix}/achive/list`;
+export const API_ASIDE_LABEL_LIST = `${prefix}/aside/tag-cloud/list`;

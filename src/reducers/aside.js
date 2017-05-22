@@ -7,6 +7,7 @@ const initState = {
         newest: [],
         random: [],
     },
+    labels: []
 }
 
 export default function aside(state = initState, { type, payload }) {
@@ -17,6 +18,14 @@ export default function aside(state = initState, { type, payload }) {
         return {
             ...state,
             achive: data
+        };
+    }
+    case actionType.ASIDE_LABEL_LIST: {
+        const { data: { list } } = payload;
+
+        return {
+            ...state,
+            labels: list
         };
     }
     default:

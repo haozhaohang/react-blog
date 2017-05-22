@@ -19,13 +19,15 @@ class Aside extends Component {
     }
 
     componentDidMount() {
-        const { fetchAchiveList } = this.props;
+        const { fetchAchiveList, fetchLabelList } = this.props;
 
         fetchAchiveList();
+
+        fetchLabelList()
     }
 
     render() {
-        const { achive, onSearch } = this.props;
+        const { achive, labels, onSearch } = this.props;
 
         return (
             <aside className="aside-wrapper">
@@ -46,7 +48,9 @@ class Aside extends Component {
                 </section>
 
                 <section>
-                    <TagCloud />
+                    <TagCloud
+                        list={labels}
+                    />
                 </section>
 
                 <section>
@@ -58,10 +62,11 @@ class Aside extends Component {
 }
 
 const mapStateToProps = ({ aside }) => {
-    const { achive } = aside;
+    const { achive, labels } = aside;
 
     return {
         achive,
+        labels,
     };
 };
 
