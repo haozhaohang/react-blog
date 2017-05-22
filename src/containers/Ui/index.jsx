@@ -19,7 +19,6 @@ class Ui extends Component {
         super(props);
 
         this.handlePageChange = common.handlePageChange.bind(this);
-        this.handleSearch = common.handleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -52,9 +51,7 @@ class Ui extends Component {
                     />
                 </div>
                 <div className="ui-aside">
-                    <Aside
-                        onSearch={this.handleSearch}
-                    />
+                    <Aside />
                 </div>
             </div>
         );

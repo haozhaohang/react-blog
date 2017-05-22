@@ -19,7 +19,6 @@ class Record extends Component {
         super(props);
 
         this.handlePageChange = common.handlePageChange.bind(this);
-        this.handleSearch = common.handleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -52,9 +51,7 @@ class Record extends Component {
                     />
                 </div>
                 <div className="record-aside">
-                    <Aside
-                        onSearch={this.handleSearch}
-                    />
+                    <Aside />
                 </div>
             </div>
         );

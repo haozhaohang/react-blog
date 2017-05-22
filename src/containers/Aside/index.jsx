@@ -16,6 +16,8 @@ import './index.styl';
 class Aside extends Component {
     constructor(props) {
         super(props);
+
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -26,8 +28,14 @@ class Aside extends Component {
         fetchLabelList()
     }
 
+    handleSearch(value) {
+        const { push } = this.props;
+
+        push(`/search-result?searchKey=${encodeURI(value)}`)
+    },
+
     render() {
-        const { achive, labels, onSearch } = this.props;
+        const { achive, labels } = this.props;
 
         return (
             <aside className="aside-wrapper">
@@ -37,7 +45,7 @@ class Aside extends Component {
 
                 <section>
                     <Search
-                        onSearch={onSearch}
+                        onSearch={this.handleSearch}
                     />
                 </section>
 

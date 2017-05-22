@@ -20,7 +20,6 @@ class Home extends Component {
         super(props);
 
         this.handlePageChange = common.handlePageChange.bind(this);
-        this.handleSearch = common.handleSearch.bind(this);
     }
 
     componentDidMount() {
@@ -54,9 +53,7 @@ class Home extends Component {
                         />
                     </div>
                     <div className="home-aside">
-                        <Aside
-                            onSearch={this.handleSearch}
-                        />
+                        <Aside />
                     </div>
                 </div>
             </div>
