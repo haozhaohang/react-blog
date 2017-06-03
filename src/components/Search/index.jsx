@@ -33,10 +33,10 @@ class Search extends Component {
     render() {
         return (
             <section className="search-wrapper">
-                <from>
+                <form>
                     <input className="text" placeholder="请输入搜索关键字" onChange={val => this.handleInputChange(val)} />
                     <button className="btn" onClick={this.handleSubmit}>搜索</button>
-                </from>
+                </form>
             </section>
         );
     }
