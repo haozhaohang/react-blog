@@ -14,20 +14,25 @@
 
     .header-logo {
         flex: 1;
-        h1 {
-            display: inline-block;
-            font-size: 32px;
-            font-family: cursive;
-            color: #555;
-            font-weight: 800;
-            height: 74px;
-            line-height: 74px;
-        }
-        h2 {
-            display: inline-block;
-            font-family: cursive;
-            color: #555;
-            text-indent: 1em;
+        & > a {
+            display: flex;
+            h1 {
+                display: flex;
+                font-size: 32px;
+                font-family: cursive;
+                color: #555;
+                font-weight: 800;
+                height: 74px;
+                line-height: 74px;
+            }
+            h2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: cursive;
+                color: #555;
+                text-indent: 1em;
+            }
         }
     }
 

@@ -9,10 +9,8 @@ const Header = () =>
             <header className="header-containers clearfix">
                 <div className="header-logo">
                     <Link to="/">
-                        <h1>
-                            易怜白
-                            <p>前端博客 - 专注技术分享</p>
-                        </h1>
+                        <h1>问崖</h1>
+                        <h2>前端博客 - 专注技术分享</h2>
                     </Link>
                 </div>
                 <nav className="header-list">
