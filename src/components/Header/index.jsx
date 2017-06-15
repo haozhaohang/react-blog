@@ -10,8 +10,8 @@ const Header = () =>
                 <div className="header-logo">
                     <Link to="/">
                         <h1>
-                            问崖
-                            <h2>前端博客 - 专注技术分享</h2>
+                            易怜白
+                            <p>前端博客 - 专注技术分享</p>
                         </h1>
                     </Link>
                 </div>
